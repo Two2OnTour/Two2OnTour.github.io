@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Africa: Kruger to Cape - 2 on Tour</title>
+    
+    <style>
+        /* ===== LANGUAGE TOGGLE ===== */
+        .lang-de { display: none !important; }
+        body.de-active .lang-en { display: none !important; }
+        body.de-active .lang-de { display: block !important; }
+        body.de-active .lang-de.inline { display: inline-block !important; }
+        .lang-en.inline, .lang-de.inline { display: inline-block; }
+
+        /* ===== RESET & BLOGGER CLEANUP ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header, .header, #header, #header-wrapper, .header-wrapper, .blog-header,
+        .sidebar-wrapper, .blog-pager, .post-footer, .blog-feeds, #blog-pager,
+        .feed-links, .post-feeds, aside, .sidebar, #sidebar, #sidebar-wrapper,
+        .sidebar-right, .footer, #footer-wrapper, .blog-footer, .post-share-buttons,
+        .post-comment-link, .breadcrumbs, .search, .blog-mobile-link, .skippy,
+        .skip-link, #navbar, .navbar, .attribution, .post-timestamp,
+        .blog-pager-newer-link, .blog-pager-older-link, .home-link,
+        .post-footer, .post-footer-line-1, .post-footer-line-2, .post-footer-line-3,
+        .comments h4, .comment-form, #Blog1_comments-block-wrapper,
+        .comment-footer, #comment-editor, #comment-editor-src,
+        .blogger-comment-from-post {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        .main-footer ~ * {
+            display: none !important;
+        }
+
+        body > .comments, .post-outer .comments, .date-posts .comments {
+            display: none !important;
+        }
+
+        html, body {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden !important;
+        }
+
+        .centered-top-container, .centered-bottom, .centered-top, body > .centered-top-container,
+        .main-inner, .content-inner, .region-inner, #main-wrapper, .content-wrapper,
+        .main, #main, .page, .post, .post-body, .content-wrapper > *, #main > *, body > * {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .content-outer, .content-fauxcolumn-outer, .region-inner.content-inner {
+            max-width: none !important;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #A67B5B;
+        }
+
+        /* Language Toggle in Nav */
+        .lang-toggle-nav {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .lang-btn-nav {
+            padding: 0.35rem 0.8rem;
+            background: transparent;
+            border: 1px solid #d0cbc4;
+            color: #4a4a4a;
+            font-family: 'Georgia', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn-nav:hover,
+        .lang-btn-nav.active {
+            background: #A67B5B;
+            color: white;
+            border-color: #A67B5B;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSWxrmReQhEgp-CbLL3jdsQEz6U29tvw2Q1fz56v71aRXZSwzIgsWtSogI6oGJW_4fjwSkDlIQNQPoKG0mqo9g796T_fbTu_aaZgMxtrU5dnvtAG-yz_lUKYnSQNp8DShoV9RPtcvm_6f3VFHyY3oM4mB04XtuXRmfgGi06kIjkZONfO0-WwOY-rMwTlzF/s1750/lowveldview_0001.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.2);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .hero .description {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ffffff;
+        }
+
+        /* ===== JOURNEY OVERVIEW ===== */
+        .journey-overview {
+            max-width: 100%;
+            padding: 4rem 5%;
+            background: #F2E9E1;
+        }
+
+        .journey-overview-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #A67B5B;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .journey-intro {
+            max-width: 900px;
+            margin: 60px auto 0;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        /* ===== MAP SECTION ===== */
+        .map-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 5%;
+        }
+
+        .map-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            color: #4a4a4a;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ===== REGIONS SECTION ===== */
+        .regions-section {
+            width: 100%;
+            padding: 5rem 5%;
+            background: #F2E9E1;
+        }
+
+        .regions-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 80px 0 60px;
+            color: #4a4a4a;
+        }
+
+        .region-container {
+            margin-bottom: 80px;
+        }
+
+        .region-header {
+            margin-bottom: 40px;
+        }
+
+        .region-header h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #A67B5B;
+        }
+
+        .region-header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .post-card {
+            background: white;
+            border: 1px solid #eee;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .post-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-image::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            background-size: cover;
+            background-position: center;
+            background-image: inherit;
+            transition: transform 0.5s ease;
+        }
+
+        .post-card:hover .post-image::before {
+            transform: scale(1.1);
+        }
+
+        .post-day {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(166, 123, 91, 0.9);
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .post-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: #4a4a4a;
+        }
+
+        .post-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #666;
+            flex: 1;
+        }
+
+        .post-link-wrap {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .post-link {
+            display: inline-block;
+            background: #6B8E7F;
+            color: white;
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.6rem 1.6rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .post-link:hover {
+            background: #5a7d6f;
+            transform: translateY(-1px);
+        }
+
+        /* ===== GUIDE CTA ===== */
+        .guide-section {
+            background: #F5F0E8;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .guide-section h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #4a4a4a;
+        }
+
+        .guide-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .guide-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #A67B5B;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .guide-button:hover {
+            background: #8b6346;
+        }
+
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background: #2d2d2d;
+            color: white;
+        }
+
+        .footer-contact {
+            padding: 60px 5% 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .footer-contact h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 560px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-socials a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .footer-socials a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #6B8E7F;
+            transition: width 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: #ffffff;
+        }
+
+        .footer-socials a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            padding: 22px 5%;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 1px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 3%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid,
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .region-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPNy4o5YqHArTiiEysfK1xmX3E1hEImNGvX8M1rSqNYqVQNBFzBBlulHpb-bw2JJox4oQcqrmIPZayLbFZNJlqzMd1GudTzpOhooRjD50yDvzpSUtNmkAW6E9fWE-cup5zCEDGWA8S4dnJhgDNxE1SH2oq-Q3U_411MtxWnv2LUFhdJMOp-DR1btNeX3CW/s1500/TWOonTOUR-logo02.png" alt="2 on Tour">
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><span class="lang-en inline"><a href="https://two2ontour.blogspot.com/">Home</a></span><span class="lang-de inline"><a href="https://two2ontour.blogspot.com/">Startseite</a></span></li>
+                <li><a href="https://two2ontour.blogspot.com/p/africa-afrika.html">Africa</a></li>
+                <li><a href="https://www.instagram.com/renastravelsandtastes">Instagram</a></li>
+            </ul>
+            <div class="lang-toggle-nav">
+                <button class="lang-btn-nav active" data-lang="en">EN</button>
+                <button class="lang-btn-nav" data-lang="de">DE</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="lang-en">South Africa</h1>
+            <h1 class="lang-de">Südafrika</h1>
+            <p class="subtitle lang-en">Kruger to Cape</p>
+            <p class="subtitle lang-de">Vom Krüger bis zum Kap</p>
+            <p class="description lang-en">A 3-week self-drive journey through one of Africa's most diverse and beautiful countries</p>
+            <p class="description lang-de">Eine 3-wöchige Selbstfahrer-Rundreise durch eines der vielfältigsten und schönsten Länder Afrikas</p>
+        </div>
+    </section>
+
+    <!-- Journey Overview -->
+    <section class="journey-overview">
+      <div class="journey-overview-inner">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">21</div>
+                <div class="stat-label lang-en">Days</div>
+                <div class="stat-label lang-de">Tage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24</div>
+                <div class="stat-label lang-en">Adventures</div>
+                <div class="stat-label lang-de">Abenteuer</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label lang-en">Regions</div>
+                <div class="stat-label lang-de">Regionen</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label lang-en">Memories</div>
+                <div class="stat-label lang-de">Erinnerungen</div>
+            </div>
+        </div>
+
+        <div class="journey-intro">
+            <p class="lang-en">From the wildlife-rich plains of Kruger National Park to the dramatic coastline of the Garden Route, the rugged beauty of the Klein Karoo, and the vibrant culture of Cape Town – this journey took us through South Africa's most iconic destinations. Experience this epic three-week road trip through breathtaking landscapes, incredible wildlife encounters, world-class wine regions, and unforgettable coastal adventures through our journals and pictures.</p>
+            <p class="lang-de">Von den wildreichen Ebenen des Kruger Nationalparks zur dramatische Küste der Garden Route, von der rauen Schönheit der Klein Karoo bis zur lebendigen Kultur Kapstadts – diese Reise führte uns zu Südafrikas ikonischste Reiseziele. Erlebe unseren dreiwöchigen Roadtrip durch atemberaubende Landschaften, unglaubliche Tierbegegnungen, Weltklasse-Weinregionen und unvergessliche Küstenabenteuer durch unsere Reiseberichte und Fotografien.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="map-section">
+        <h2 class="lang-en">Our Route Through South Africa</h2>
+        <h2 class="lang-de">Unsere Route Durch Südafrika</h2>
+        <div class="map-container">
+            <iframe id="map-iframe" 
+                    style="width: 100%; height: 100%; border: none;"
+                    title="South Africa Route Map">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Regions -->
+    <section class="regions-section">
+      <div class="regions-section-inner">
+        <h2 class="section-title lang-en">The Journey</h2>
+        <h2 class="section-title lang-de">Die Reise</h2>
+
+        <!-- KRUGER & PANORAMA ROUTE -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3 class="lang-en">Kruger National Park & Panorama Route</h3>
+                <h3 class="lang-de">Kruger Nationalpark & Panorama Route</h3>
+                <p class="lang-en">Where our African adventure begins – from Johannesburg through the Panorama Route to the wildlife paradise of Kruger</p>
+                <p class="lang-de">Wo unser afrikanisches Abenteuer beinnt – von Johannesburg über die Panorama Route zum Wildtierparadies Krüger</p>
+            </div>
+            <div class="posts-grid">
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiRfZESDY16t61fQaWis6pWUz7jz6adVSi3sLJHX93P911Uvz9Sxi7Y8l7N2CwCfjos4fzaNlozlAx4kNnhIe_LhHdHMvbrfFDxGfArsjYh31x-YLtOAVxhCN-OEu19d9osdNnGgmD05Yh1Js-tpFIZxvht3iiXOsBrF0lQQTsuqSjzZd7IPXSJWx_ykYl/s1750/joburg.jpg');">
+                        <div class="post-day lang-en">Day 1</div>
+                        <div class="post-day lang-de">Tag 1</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Johannesburg to Graskop</h4>
+                        <h4 class="post-title lang-de">Johannesburg nach Graskop</h4>
+                        <p class="post-excerpt lang-en">Touchdown Jo-Burg! Our South African road-trip adventure begins as we drive through the scenic landscape to Graskop, our gateway to the Panorama Route. But not without some hiccups along the way.</p>
+                        <p class="post-excerpt lang-de">Touchdown Jo-Burg! Unser südafrikanisches Roadtrip-Abenteuer beginnt mit der Fahrt nach Graskop, unserem Tor zur Panorama Route. Aber nicht ohne die ersten kleinen Hürden auf dem Weg.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-1-johannesburg-to.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-1-johannesburg-to.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSWxrmReQhEgp-CbLL3jdsQEz6U29tvw2Q1fz56v71aRXZSwzIgsWtSogI6oGJW_4fjwSkDlIQNQPoKG0mqo9g796T_fbTu_aaZgMxtrU5dnvtAG-yz_lUKYnSQNp8DShoV9RPtcvm_6f3VFHyY3oM4mB04XtuXRmfgGi06kIjkZONfO0-WwOY-rMwTlzF/s1750/lowveldview_0001.jpg');">
+                        <div class="post-day lang-en">Day 2</div>
+                        <div class="post-day lang-de">Tag 2</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Panorama Route</h4>
+                        <h4 class="post-title lang-de">Panorama Route</h4>
+                        <p class="post-excerpt lang-en">Vista voyaging! Chasing horizons along the Panorama Route, where the views are simply endless and every stop feels like a postcard. God's Window, Bourke's Potholes, Three Rondavels and may more.</p>
+                        <p class="post-excerpt lang-de">Vista Voyaging! Wir erkunden eine der landschaftlich schönsten Strecken Südafrikas – God's Window, Bourke's Luck Potholes, die Three Rondavels uvm. mit atemberaubenden Ausblicken über das Lowveld.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/deutsche-version-south-africa-day-2.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/deutsche-version-south-africa-day-2.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0aDd24BPmpAVGdcwiYArA-KLj7OWmANjLuNANRxOj5rWegLDfy-ES1MghCk6P8H-50CeKl_YUO9mtz6Ybtjdqk4kb1vPhK1l7Pm_h0sr6v-Iwzubnbqg545o_kaIvbXL9Q3TjCIwDzYCNLsgsGcBJrxU8F2UGmLt-dOAoufy3MWp80mGhwD9yljp0p7fz/s1750/blyderiverdam_0002.jpg');">
+                        <div class="post-day lang-en">Day 3</div>
+                        <div class="post-day lang-de">Tag 3</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Blyde River Canyon Boat Tour</h4>
+                        <h4 class="post-title lang-de">Blyde River Canyon Bootstour</h4>
+                        <p class="post-excerpt lang-en">Cruising through the third-largest canyon in the world, surrounded by dramatic cliffs and pristine nature on the Blyde River Dam.</p>
+                        <p class="post-excerpt lang-de">Bootsfahrt durch den drittgrößten Canyon der Welt, umgeben von dramatischen Klippen und unberührter Natur am Blyde River Damm.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-3-blyde-river.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-3-blyde-river.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8PNJpYppPEC-5p92ifSjmVz9pD661Y2_zDzdC2XusctsaHhpSfSsRZ6_gzCHhvK6kSHXKmnk4uOrHpsjop9PvlQ1EtAJsPpDsXRi4FaIPdbHzPcZPtd_H8PMVFOhs4wANoPk22QX96H19Z9ZVQ2Tm4bDL6YqgzqQgG9W74z08ZeehoaZX47GUgu0OzT6W/s1750/klaserie_0011.jpg');">
+                        <div class="post-day lang-en">Days 3-5</div>
+                        <div class="post-day lang-de">Tage 3-5</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Klaserie Private Game Reserve</h4>
+                        <h4 class="post-title lang-de">Klaserie Private Game Reserve</h4>
+                        <p class="post-excerpt lang-en">A tale of Walking Safaris and Bush lore, of scorching heat and freezing storms, and of our first ever Wild Dog encounter in this 2 night private GR adventure.</p>
+                        <p class="post-excerpt lang-de">Eine Geschichte von Walking Safaris und Busch-Wissen, sengender Hitze und kalten Stürmen – und von unserer ersten Begegnung mit Wildhunden im privaten Reservat.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-days-3-5-klaserie.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-days-3-5-klaserie.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkiktNP0FmLZWc1ARiKzg2MzSWmuB4Lua_8Sog8p6DCzk4gvcEF1XEYUAA6NpB6PRFti0hQBU2Lbqo-U-62ITTVc7owl0_WjakWR0VzcBRjw-rEW7T5AaNoP2N6GvrFdq7Q3Yto2FA70m_UodQvHZmjXxzlG7GpWRkwGjBBpvkNypJTxKsO2Ixr6HU3u-j/s2546/$lions_17.jpg');">
+                        <div class="post-day lang-en">Day 5</div>
+                        <div class="post-day lang-de">Tag 5</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Self-Drive Safari in Kruger National Park</h4>
+                        <h4 class="post-title lang-de">Self-Drive Safari im Kruger Nationalpark</h4>
+                        <p class="post-excerpt lang-en">We take control of our own safari adventure! Exploring Kruger at our own pace, spotting four of the "Big Five"? 'Been there, done that!'</p>
+                        <p class="post-excerpt lang-de">Wir nehmen unser Safari-Abenteuer selbst in die Hand und erkunden den Krüger NP auf eigene Faust. Dabei endecken wir vier der "Big Five"!</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-5-self-drive.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-5-self-drive.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhE8cgCgu2rEfx-NynHZnHvx_F97hTGGKfUzwYZBxvoGUa5v8wj-UGwwS88JmXqwF3SjP7km16txRTRLnO-EtHzmb9fByA-kQ18WnvGjMziE_KYlskgbP_v9Hb95VmE7rfwME9ih23pMMzPyQAxAMlSA1ziaFPacOq69-83PEhgQrhpN4TQpWtYEcSqF0wT/s1750/leopard.jpg');">
+                        <div class="post-day lang-en">Days 6-7</div>
+                        <div class="post-day lang-de">Tage 6-7</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Guided Safari in Kruger Park</h4>
+                        <h4 class="post-title lang-de">Geführte Safari im Kruger Park</h4>
+                        <p class="post-excerpt lang-en">The best safari days ever! We strike gold with rare moments, tick off the "Big Five" and enjoy two days of world-class sightings with our private guide.</p>
+                        <p class="post-excerpt lang-de">Die besten Safari-Tage aller Zeiten! Wir erleben seltenen Momente, machen ein Häkchen an die die „Big Five" und genießen zwei Tage Weltklasse-Sichtungen mit unserem privaten Guide.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-days-6-7-safari-in.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-days-6-7-safari-in.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxqcNWlkUQk6eDeX1OT2IOR5dRoLp0NtvQtmnSIixcPp95-cPiU0PPkkmo7TxW85E_-yNxnQMYhrgvj4UqB-pXHdehOvxID1bwZpVmc-EFqf9Y0WK1W3EzUdqcPxHSrE0lRZBhJuWBYU4o63mcABuk0gUsosyYXvxuKTYEcoKa5iG2VrKCh_Lk9OEQh-Pl/s1750/dullstroom_0001.jpg');">
+                        <div class="post-day lang-en">Day 8</div>
+                        <div class="post-day lang-de">Tag 8</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Back to Johannesburg</h4>
+                        <h4 class="post-title lang-de">Zurück nach Johannesburg</h4>
+                        <p class="post-excerpt lang-en">Leaving the bush behind, we return to the city through a valley of potholes and the charming town of Dullstroom.</p>
+                        <p class="post-excerpt lang-de">Wir lassen den Busch hinter uns und kehren durch das charmante Örtchen Dullstroom zurück zum Flughafen.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-8-back-to.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-8-back-to.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GARDEN ROUTE -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3 class="lang-en">The Garden Route</h3>
+                <h3 class="lang-de">Die Garden Route</h3>
+                <p class="lang-en">South Africa's most scenic coastal drive – pristine beaches, ancient forests, and dramatic coastline</p>
+                <p class="lang-de">Südafrikas landschaftlich schönste Küstenstraße – unberührte Strände, uralte Wälder und dramatische Küste</p>
+            </div>
+            <div class="posts-grid">
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLmw9CuG_fgTMypmAeEIF1gCgE3RYLXumZbuTwtgzG9So1KIRiTuKN6IXL2SORhB7nP38wD1zlNmUcXNkp22FN_DqOaL9GU2vZdwJflvCDe-VXE6LszE2xgf_FIUXU3vsP-XLpfE-3_LiqYsY8msZ4raO5vGJVPDoATDj45F7-KDvKWx7C6P84pwzUk35U/s1750/mistymountain_0013.jpg');">
+                        <div class="post-day lang-en">Day 9</div>
+                        <div class="post-day lang-de">Tag 9</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Off to the Garden Route</h4>
+                        <h4 class="post-title lang-de">Auf zur Garden Route</h4>
+                        <p class="post-excerpt lang-en">Flying to Port Elizabeth, then heading to Tsitsikamma where we spend a night in a stargazing dome, complete with a wood-fired hot tub.</p>
+                        <p class="post-excerpt lang-de">Wir fliegen nach Port Elizabeth, dann geht's weiter nach Tsitsikamma, wo wir die Nacht im "Stargazing Dome" mit holzbefeuertem Whirlpool verbringen.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-9-off-to-garden.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-9-off-to-garden.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgs8I8dvSYmLQxnEOg7yvZmHtXYvmdKpiQIyhJwsunKhaF8kIynHewBw-jMnAwf36t13TII-SXz8GthmSsjCupFKl389dNXCeu5qstHFPTJ95H-dJeKzUhAPHOVov5TBLQgq21N2a78JLvTCOlDAL5nh8_va8M6s643AWAzT7FLfzU-Cyr3hDJ8HzbCDvNG/s1750/tsitsikamma_0005.jpg');">
+                        <div class="post-day lang-en">Day 10</div>
+                        <div class="post-day lang-de">Tag 10</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Tsitsikamma National Park</h4>
+                        <h4 class="post-title lang-de">Tsitsikamma Nationalpark</h4>
+                        <p class="post-excerpt lang-en">We hike through ancient rainforests, tackle the famous suspension bridge and round the day off with  a golden sunset in Knysna!</p>
+                        <p class="post-excerpt lang-de">Wir wandern durch uralte Regenwälder, bezwingen die berühmte Hängebrücke und lassen den Tag bei einem goldenen Sonnenuntergang in Knysna ausklingen!</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-day-10-tsitsikamma.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-day-10-tsitsikamma.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhY2JfEO2AhUlZ3xk29P0Qpp1GQJ8uWI1ctFjbS93anK-UT9lvDB1yRB7f-tBzusI2vq6au5uXGIq2y60QF3JQN41sn7aDO0Zhvy7L9JF11d1N8JXVoWLN3RDY9e5cPwey2z48HSsEE4dmSSgoXgJAaGxfc8iYwYn7FBizMwEU0BJ-99gR9hqZNwx727iCo/s1750/robberg_35.jpg');">
+                        <div class="post-day lang-en">Day 11</div>
+                        <div class="post-day lang-de">Tag 11</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Plettenberg Bay: Whale Watching & Robberg Hike</h4>
+                        <h4 class="post-title lang-de">Plettenberg Bay: Walbeobachtung & Robberg Wanderung</h4>
+                        <p class="post-excerpt lang-en">Witnessing Southern Right Whales breach off the coast and hiking the stunning Robberg Peninsula with its dramatic coastal views.</p>
+                        <p class="post-excerpt lang-de">Wir beobachten Wale von unserer Boots-Safari und wandern auf der atemberaubenden Robberg-Halbinsel mit dramatischen Küstenansichten.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-11-plettenberg.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-11-plettenberg.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- KLEIN KAROO -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3 class="lang-en">Klein Karoo & Route 62</h3>
+                <h3 class="lang-de">Klein Karoo & Route 62</h3>
+                <p class="lang-en">Semi-desert landscapes, dramatic mountain passes, and the famous ostrich capital</p>
+                <p class="lang-de">Halbwüstenlandschaften, dramatische Bergpässe und die berühmte Straußenhauptstadt</p>
+            </div>
+            <div class="posts-grid">
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDZWJjeSUacRcG2-qNG_ulLmNMJbj6J5BXCY-4A6jBlLzx2S0kdqUFTEEu6OLn7GDWM-DOHRudxLGMo4nRcAqR4WV2GendpL_iivpXyF0N8cQym28EtpWVvVOOqL0jcJfPsT-u_FH1dFnhJA86Ob4EloihKF_BXTB6wbkvfgQ7vsFPev6neDOsRALBZQNz/s1750/oudtshoorn_05.jpg');">
+                        <div class="post-day lang-en">Day 12</div>
+                        <div class="post-day lang-de">Tag 12</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Klein Karoo & Swartberg Pass</h4>
+                        <h4 class="post-title lang-de">Klein Karoo & Swartberg Pass</h4>
+                        <p class="post-excerpt lang-en">Conquering one of South Africa's most spectacular mountain passes and discovering the unique beauty of the semi-arid Klein Karoo.</p>
+                        <p class="post-excerpt lang-de">Wir bezwingen einen der spektakulärsten Bergpässe Südafrikas und entdecke die einzigartige Schönheit der semi-ariden Klein Karoo.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-12-klein-karoo.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-12-klein-karoo.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVIs5XFkZubvShQDOx5IFDcjKbqqvAXKJdp1sctBM9f9ZsqMKRS8bqrVcB-puV4QFzGTS4Ir9EYCZ6zPQOBLRxtwNbm5bvrofjlDl93p6YpNcYD7-Bx6ag-lWXOGsvzKhat-HhdPyoJsHyZXNnl5RoMOqn3xdsu0_fW8vloZxsp2lbS_iZWhDQVe8zS40Q/s1750/oudtshoorn_0002_01.jpg');">
+                        <div class="post-day lang-en">Day 13</div>
+                        <div class="post-day lang-de">Tag 13</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Route 62</h4>
+                        <h4 class="post-title lang-de">Route 62</h4>
+                        <p class="post-excerpt lang-en">We start our day learning the secrets of ostrich farming in Oudtshoorn before cruising along the scenic Route 62 to Barrydale.</p>
+                        <p class="post-excerpt lang-de">Der Tag startet mit einer Einführung in die Kunst der Straußenzucht bevor wir über die malerische Route 62 nach Barrydale fahren.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-13-route-62.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-13-route-62.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpX-im09eVFa_WK5OMYa1oeTV8jtVRgOJaObCkVBnP_R7rLew96srWoxDGBKWKmleoUNxpc3ABmbSkz_dtvFRmypq1A74RaVRrp6am24fEyf4tDS6e3LpBnuToqddynYfhXRtj_OqHPPLh2A6zkDF4MSNr_vbZj9tKiwar0t0P4EHU14EIgBlovJuvfo3C/s1750/agulhas_0004.jpg');">
+                        <div class="post-day lang-en">Day 14</div>
+                        <div class="post-day lang-de">Tag 14</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Cape Agulhas & Hermanus</h4>
+                        <h4 class="post-title lang-de">Cape Agulhas & Hermanus</h4>
+                        <p class="post-excerpt lang-en">We stand at Africa's southernmost point where two oceans meet, enjoy fine dinig, and overnight in De Kelders: whale watching from bed included.</p>
+                        <p class="post-excerpt lang-de">Wir stehen am südlichsten Zipfel Afrikas, genießen Fine Dining und übernachten in De Kelders: Whale Watching vom Bett inbegriffen.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-14-cape-agulhas.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-14-cape-agulhas.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CAPE TOWN & WINELANDS -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3 class="lang-en">Cape Town, Winelands & West Coast</h3>
+                <h3 class="lang-de">Kapstadt, Winelands & Westküste</h3>
+                <p class="lang-en">The Mother City, world-class wines, dramatic coastlines, and wildflowers in bloom</p>
+                <p class="lang-de">Die Mother City, Weltklasse-Weine, dramatische Küsten und Wildblumenblüte</p>
+            </div>
+            <div class="posts-grid">
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxy0P_BsBveI3pOUnz3bCX43wUmSSK4ega160ZLyI0gwn21pi2SuGWCTBDMsW3RVn5_2lf1-Igkimq6ha6S9PVfADQIcLbp0B69Y8cvF85jCD4w0h8mJZK7bo2nMCgPBGbX4Np3-Ij3HJod4BuevJJL8nSg2BXlqYHMLYaGVz3XwWHGnNYfBpxyY-4x3Nf/s1750/clarencedrive_0005.jpg');">
+                        <div class="post-day lang-en">Day 15</div>
+                        <div class="post-day lang-de">Tag 15</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Clarence Drive, Penguins & Winelands</h4>
+                        <h4 class="post-title lang-de">Clarence Drive, Pinguine & Winelands</h4>
+                        <p class="post-excerpt lang-en">From coastal beauty to winelands elegance: we drive the breathtaking Clarence Drive, visit the penguins in Betty's Bay and stay at a wine estate.</p>
+                        <p class="post-excerpt lang-de">Von Küstenschönheit zu Winelands-Eleganz: Wir befahren den atemberaubenden Clarence Drive, besuchen die Pinguine in Betty's Bay und übernachten auf einem Weingut.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-15-clarence-drive.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-15-clarence-drive.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiE04Garil9A6mCatQp9e2H-ePBrAqRK8o5d8tpNcvQzfRKEwvM_jGQfxpuchh5psPu6bVPS2QxZee0fyKxXX2PD4KdmNjy8B0MfhKlvLOPR_g00zXC3nxDWNNzxJvS9d3VQUZqv4WnIjztwNabjgi9aJPMKX6MSvVs2nAF9r5-pkYJ0Gv2X0bblzQlHLio/s1750/winelands_0013.jpg');">
+                        <div class="post-day lang-en">Day 16</div>
+                        <div class="post-day lang-de">Tag 16</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Winelands</h4>
+                        <h4 class="post-title lang-de">Winelands</h4>
+                        <p class="post-excerpt lang-en">In vino veritas! We explore the the wine estates and discover a true hidden gem before falling in love with an unexpected place ...</p>
+                        <p class="post-excerpt lang-de">In vino veritas - wir erkunden die Weingüter und entdecken einen Geheimtipp. Dann verlieben wir uns in einen unerwarteten Ort ...</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-16-winelands.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-16-winelands.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXloFS0GYAE3Lq3lJKWEhhsCuiYT1qG-raDK5lq9cFZsCT9llBp-0Wh4J0y5-I5AJy8azdZPY-5cuI4FkmMrkO-N7lcq5rnrDfGS9VSvdOu-t6ct7t2CctoaKZIXzlmzw3b2lwA7L30ySOm2jhsjI-MljkX-Do6WlbmClxW-MO1bSUM63tQofZxWxYipNs/s1750/westcoast_0001.jpg');">
+                        <div class="post-day lang-en">Day 17</div>
+                        <div class="post-day lang-de">Tag 17</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">West Coast National Park</h4>
+                        <h4 class="post-title lang-de">West Coast Nationalpark</h4>
+                        <p class="post-excerpt lang-en">It's wildflowers in bloom season! Not all oceans are wet - a sea of wild flowers in West Coast national park.</p>
+                        <p class="post-excerpt lang-de">Es ist die Zeit der Wildblumenblüte! Nicht alle Ozeane sind nass - ein Meer aus Wildblumen im West Coast Nationalpark.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-17-west-coast.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-17-west-coast.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOviiBF5bbZq9Ex6Dvm0US7t3UYzMvMyx_d4zaM-dSs82hID7G3dGTmAETeij0F0gYP-0Ku1UqmND36s7Ws1ut90ixftchozEvJusv3HIuLgXDncGtaKPbznvGf0eJZRww5F4SoyVgGMIElSHZsLwc5ilOVb3xdAlEuW2l4CMhDi3cg1GJUWTBAtpBiq_t/s1750/capeofgoodhope_0001.jpg');">
+                        <div class="post-day lang-en">Day 18</div>
+                        <div class="post-day lang-de">Tag 18</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Cape of Good Hope</h4>
+                        <h4 class="post-title lang-de">Kap der Guten Hoffnung</h4>
+                        <p class="post-excerpt lang-en">We explore Cape of Good Hope, drive Chapman's Peak Drive, the world's most scenic coastal road, and end the day  at the V&amp;A Waterfront.</p>
+                        <p class="post-excerpt lang-de">Wir erkunden das Kap der Guten Hoffnung, fahren den Chapman's Peak Drive, die schönste Küstenstraße der Welt, und lassen den Tag an der  V&amp;A Waterfront ausklingen.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-18-cape-of-good.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-18-cape-of-good.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhki16p55_3hctn5uF9DkfWclKkVmpNbDo0-j2m_8z2FXIRzjmbPYnjS8VXwBZDPWcYQdVsfuVAGn4qWWOovq-uLAyj1VFZFnEUpkNmimQfm2aYl6Y65i9accDxnT1AxJLeHOzFofx_62S6HBx3BoVB39Ty1aRIzJrrX7aCMC6kYGjMvtI1TAXjWQZBKE2m/s1750/CT-1_0001_01.jpg');">
+                        <div class="post-day lang-en">Day 19</div>
+                        <div class="post-day lang-de">Tag 19</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Cape Town, the Mother City</h4>
+                        <h4 class="post-title lang-de">Kapstadt, die Mother City</h4>
+                        <p class="post-excerpt lang-en">Cape Town shows us its wintry side, so we brave the chill on the Red Bus to explore the city's diverse neighborhoods.</p>
+                        <p class="post-excerpt lang-de">Kapstadt zeigt sich von seiner winterlichen Seite, also trotzen wir der Kälte im roten Doppeldeckerbus.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-19-cape-town.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-19-cape-town.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+                   <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghdzN-Xqwp4Zh_rsKKALMyLF5Owtqq-iOGbu6GXSTh1BE7vdhXj1vQwtAyrt9PUZNvCLd4ysqRviKgrNCmrb1jDffJ_F0PL5wPe4kZqD1SO7rQ9tmh2rE_UOZYVKEH5HOpjWC5hwrdBYfHKdhMKT7nsLwQ3UU0dpwRBG9ZDBFA2SRvtPauzPbBvhTfIppe/s1750/CT-2-kirstenbosch.jpg');">
+                        <div class="post-day lang-en">Day 20</div>
+                        <div class="post-day lang-de">Tag 20</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Kirstenbosch Botanical Garden &amp; Hout Bay</h4>
+                        <h4 class="post-title lang-de">Botanischer Garten Kirstenbosch &amp; Hout Bay</h4>
+                        <p class="post-excerpt lang-en">We explore the world-famous Kirstenbosch Botanical Garden just in time for the King Protea bloom before heading to the "Republic of Hout Bay."</p>
+                        <p class="post-excerpt lang-de">Wir erkunden den weltberühmten botanischen Garten Kirstenbosch pünktlich zur Protea-Blüte, bevor es in die „Republik Hout Bay" geht.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-21-table-mountain.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-21-table-mountain.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div><div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAx6M_kXBh1g-4WSbQ4wauKp0lsf4OlzCu0tOGe7YYCU8TUaNZiBzborqu4viZoZVTNN7weGuKb-wCp543QeP2FsLRuYtQ9MsiOhfVd6UEqzYGxjLNvxcRnwnpWVj6M8cN6UM4mz8WYlR9feA5Ab2rXhoPgaQi7Walj9NHD14ltrw9SDndzT3iBtqXGhsT/s1750/bo-kaap_0006.jpg');">
+                        <div class="post-day lang-en">Day 21</div>
+                        <div class="post-day lang-de">Tag 21</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title lang-en">Boo-Kap & Table Mountain</h4>
+                        <h4 class="post-title lang-de">Boo-Kap & Tafelberg</h4>
+                        <p class="post-excerpt lang-en">Ascending Cape Town's iconic flat-topped mountain for panoramic views over the city, ocean, and peninsula – a breathtaking finale to our journey.</p>
+                        <p class="post-excerpt lang-de">Wir besteigen Kapstadts ikonischen Tafelberg für Panoramablicke über die Stadt, den Ozean und die Halbinsel – ein atemberaubendes Finale unserer Reise.</p>
+                        <div class="post-link-wrap">
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-21-table-mountain.html" class="post-link lang-en">Read More</a>
+                        <a href="https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-21-table-mountain.html" class="post-link lang-de">Mehr Lesen</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide CTA Section -->
+    <section class="guide-section">
+        <h2 class="lang-en">Plan Your Own South African Adventure</h2>
+        <h2 class="lang-de">Plane Dein Eigenes Südafrika-Abenteuer</h2>
+        <p class="lang-en">Ready to experience South Africa for yourself? Check out our comprehensive guide with full itinerary, accommodation recommendations, costs, and essential tips for planning your Kruger to Cape journey.</p>
+        <p class="lang-de">Bereit, Südafrika selbst zu erleben? Schau dir unseren umfassenden Leitfaden mit vollständiger Reiseroute, Unterkunftsempfehlungen, Kosten und wichtigen Tipps für die Planung deiner Kruger-bis-Kap-Reise an.</p>
+        <a href="https://two2ontour.blogspot.com/p/south-africa-sudafrika-september-2024.html" class="guide-button lang-en">View Complete Itinerary</a>
+        <a href="https://two2ontour.blogspot.com/p/south-africa-sudafrika-september-2024.html" class="guide-button lang-de">Vollständige Reiseroute Ansehen</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-contact">
+            <h2 class="lang-en">Get In Touch</h2>
+            <h2 class="lang-de">Kontaktiere Uns</h2>
+            <p class="lang-en">Have questions about our travels? Want to know more about a specific destination? We'd love to hear from you!</p>
+            <p class="lang-de">Hast du Fragen zu unseren Reisen? Möchtest du mehr über ein bestimmtes Reiseziel erfahren? Wir würden uns freuen, von dir zu hören!</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/Two2OnTour" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/two2ontour" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/@Two2OnTour" target="_blank">YouTube</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyright by Verena &amp; Nicolas, 2 On Tour</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        const langButtons = document.querySelectorAll('.lang-btn-nav');
+        
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (lang === 'de') {
+                    document.body.classList.add('de-active');
+                } else {
+                    document.body.classList.remove('de-active');
+                }
+                
+                localStorage.setItem('preferredLanguage', lang);
+            });
+        });
+        
+        // Load saved language
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang === 'de') {
+            document.body.classList.add('de-active');
+            document.querySelector('[data-lang="de"]').classList.add('active');
+            document.querySelector('[data-lang="en"]').classList.remove('active');
+        }
+
+        // Load map iframe dynamically using current domain
+        window.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.getElementById('map-iframe');
+            // Get current domain and construct map URL
+            const mapUrl = window.location.origin + '/p/sa2024-map.html';
+            iframe.src = mapUrl;
+        });
+    </script>
+
+</body>
+</html>
