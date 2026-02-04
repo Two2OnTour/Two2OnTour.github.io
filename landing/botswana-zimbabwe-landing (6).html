@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botswana & Zimbabwe 2025 - Safari Adventure - 2 on Tour</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: #A67B5B;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #A67B5B;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #A67B5B;
+            color: #A67B5B;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: #A67B5B;
+            color: white;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Language-specific content */
+        .lang-en, .lang-de {
+            display: none;
+        }
+
+        body[data-lang="en"] .lang-en {
+            display: block;
+        }
+
+        body[data-lang="en"] .lang-en-inline {
+            display: inline;
+        }
+
+        body[data-lang="de"] .lang-de {
+            display: block;
+        }
+
+        body[data-lang="de"] .lang-de-inline {
+            display: inline;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgi8wmlf82wZ4bnr9Sm1p8YNgrZsOm6eRROYkO7WA4qHOq4wIKSBnm4U0-BYwL09w8RQ2YXS86t0kdNlrBFHwNFptaPEdS-8V0eVjaCSAF1ItsRpUTHcPLzw8thV56M-wBO-StHEgOC_ykF10271bpYF4RDpu-ocwwkyM0i-2CMKOl0-T_rsCjItE-HdAVd/s2546/$lions_14.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.2);
+            animation: slowZoom 30s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1.2); }
+            100% { transform: scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Trip Info Section */
+        .trip-info {
+            background: #F2E9E1;
+            padding: 4rem 5%;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .info-number {
+            font-size: 4rem;
+            font-weight: 300;
+            color: #A67B5B;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .info-label {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4a4a4a;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            padding: 4rem 5%;
+        }
+
+        .map-container {
+            max-width: 60%;
+            margin: 0 auto;
+        }
+
+        .map-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #5B6D5B;
+            margin-bottom: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #A67B5B;
+            margin-bottom: 4rem;
+        }
+
+        /* Destination Card */
+        .destination-section {
+            margin-bottom: 100px;
+        }
+
+        .destination-title {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #5B6D5B;
+            margin-bottom: 3rem;
+            text-align: center;
+            border-bottom: 2px solid #E8DCC4;
+            padding-bottom: 1rem;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .post-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-image::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            background-size: cover;
+            background-position: center;
+            background-image: inherit;
+            transform: scale(1.2);
+            transition: transform 0.5s;
+        }
+
+        .post-card:hover .post-image::before {
+            transform: scale(1.3);
+        }
+
+        .post-day {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #A67B5B;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .post-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: #4a4a4a;
+            text-transform: uppercase;
+        }
+
+        .post-excerpt {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            flex-grow: 1;
+        }
+
+        .post-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #5B6D5B;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .post-link:hover {
+            background: #A67B5B;
+        }
+
+        /* Footer */
+        footer {
+            background: #5B6D5B;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .info-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .info-number {
+                font-size: 3rem;
+            }
+
+            .map-container {
+                max-width: 100%;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Zimbabwe Background Pattern */
+        .zimbabwe-pattern {
+            background: #F2E9E1;
+        }
+
+        /* Botswana Background Pattern */
+        .botswana-pattern {
+            background: white;
+        }
+
+        /* White Section Divider */
+        .section-divider {
+            height: 100px;
+            background: white;
+        }
+    </style>
+</head>
+<body data-lang="en">
+
+    <!-- Navigation -->
+    <nav>
+        <a href="https://two2ontour.blogspot.com/" class="logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPNy4o5YqHArTiiEysfK1xmX3E1hEImNGvX8M1rSqNYqVQNBFzBBlulHpb-bw2JJox4oQcqrmIPZayLbFZNJlqzMd1GudTzpOhooRjD50yDvzpSUtNmkAW6E9fWE-cup5zCEDGWA8S4dnJhgDNxE1SH2oq-Q3U_411MtxWnv2LUFhdJMOp-DR1btNeX3CW/s1500/TWOonTOUR-logo02.png" alt="2 on Tour">
+        </a>
+        <ul class="nav-links">
+            <li><a href="https://two2ontour.blogspot.com/">Home</a></li>
+            <li><a href="https://two2ontour.blogspot.com/p/africa-afrika.html">Africa</a></li>
+            <li><a href="https://www.instagram.com/renastravelsandtastes">Instagram</a></li>
+            <li class="language-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('de')">DE</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="lang-en">Botswana & Zimbabwe</span>
+                <span class="lang-de">Botsuana & Simbabwe</span>
+            </h1>
+            <p class="subtitle">
+                <span class="lang-en">16 Days of Safari Adventure | 2025</span>
+                <span class="lang-de">16 Tage Safari-Abenteuer | 2025</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Trip Info -->
+    <section class="trip-info">
+        <div class="info-container">
+            <div class="info-item">
+                <div class="info-number">16</div>
+                <div class="info-label">
+                    <span class="lang-en">Days</span>
+                    <span class="lang-de">Tage</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-number">9</div>
+                <div class="info-label">
+                    <span class="lang-en">Locations</span>
+                    <span class="lang-de">Orte</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-number">4</div>
+                <div class="info-label">
+                    <span class="lang-en">Countries</span>
+                    <span class="lang-de">Länder</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-number">∞</div>
+                <div class="info-label">
+                    <span class="lang-en">Childhood Dreams</span>
+                    <span class="lang-de">Kinderträume</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <h2 class="map-title">
+                <span class="lang-en">Our Route Through Botswana & Zimbabwe</span>
+                <span class="lang-de">Unsere Route Durch Botsuana & Simbabwe</span>
+            </h2>
+            <iframe src="https://two2ontour.blogspot.com/p/bw-zim-map.html" style="width: 100%; height: 600px; border: none; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" title="Botswana & Zimbabwe Route Map"></iframe>
+        </div>
+    </section>
+
+    <!-- Zimbabwe Section -->
+    <section class="zimbabwe-pattern">
+        <h2 class="section-title">
+            <span class="lang-en">Zimbabwe</span>
+            <span class="lang-de">Simbabwe</span>
+        </h2>
+        
+        <div class="destination-section">
+            <h3 class="destination-title">
+                <span class="lang-en">Victoria Falls & Hwange National Park</span>
+                <span class="lang-de">Victoriafälle & Hwange Nationalpark</span>
+            </h3>
+            
+            <div class="posts-grid">
+                <!-- Post 1: Arrivals -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjr71521hyMEI5xJiVzLNrm1B43IZ1RawEPz-dSNWSgz0uzg0Om-NbUbrLoIXEj0UsxYSHB4EwoudaOEIBOCqIXY8Sy2omnhAoNRWXGc9NBRxAI8jYlwZo7ylYnpuhZmo24dJx5UFDAcmTb4oQjnXRHhrkHrTTLhxFvp-8aXprhtbsIoZUWlTTLlzve9PgN/s1337/hwange_0001.jpg');">
+                        <div class="post-day">Days 1-2</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Arrivals in Africa</h4>
+                        <p class="post-excerpt">Johannesburg layover and flight to Victoria Falls, Zimbabwe</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-1-2-arrivals-in.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Post 2: Hwange -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgi8wmlf82wZ4bnr9Sm1p8YNgrZsOm6eRROYkO7WA4qHOq4wIKSBnm4U0-BYwL09w8RQ2YXS86t0kdNlrBFHwNFptaPEdS-8V0eVjaCSAF1ItsRpUTHcPLzw8thV56M-wBO-StHEgOC_ykF10271bpYF4RDpu-ocwwkyM0i-2CMKOl0-T_rsCjItE-HdAVd/s2546/$lions_14.jpg');">
+                        <div class="post-day">Days 2-4</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Hwange National Park Safari</h4>
+                        <p class="post-excerpt">Morning, afternoon and full-day game drives in Zimbabwe's largest national park</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-2-4-hwange-national.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Post 3: Victoria Falls -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihJQGL-IfTbdmge4FQh5yL9h-ix5KVMXeM1pJnXPglLd5QVUKHTKzPZXnvfDpLbADjZzWgjJkW2HVdi-t9dg7Gi7yHjsLGmumbYE61xuIJ9fnG1GlabVfC2h9YXQ0GhHsZyd5sFlAvMRmAxLlxCavnR6IQM-WJNPfJzSYPxF88WVJSMs7GHVvi53d1Xmns/s1750/vicfalls_0043.jpg');">
+                        <div class="post-day">Days 4-6</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Victoria Falls</h4>
+                        <p class="post-excerpt">Exploring the falls from Zimbabwe & Zambia side, plus morning safari in Zambezi NP</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-4-5-victoria-falls.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- White Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Botswana Section -->
+    <section class="zimbabwe-pattern">
+        <h2 class="section-title">
+            <span class="lang-en">Botswana</span>
+            <span class="lang-de">Botsuana</span>
+        </h2>
+        
+        <!-- Chobe Region -->
+        <div class="destination-section">
+            <h3 class="destination-title">
+                <span class="lang-en">Chobe & Northern Botswana</span>
+                <span class="lang-de">Chobe & Nord-Botsuana</span>
+            </h3>
+            
+            <div class="posts-grid">
+                <!-- Post 4: Chobe -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE8-nAR9Y8g-VNh5yhBR6TapcJmbFS6kf98DIEZBlpDu4VfEUvmiP8YM4W12pqbPQvpz1kAZI8FvJ0IFl6iYxPNclqAIujEhYxRD1ioasBAjHWMagLbTQSA1Pm3pafQ-KlTUZCREfOISMULhMQhOORo6MgRt7H-D0qNw3IkhX7ERh4UfOqPVwdxXAlQjRJ/s16000/$chobe_12.jpg');">
+                        <div class="post-day">Days 6-7</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Chobe National Park</h4>
+                        <p class="post-excerpt">Boat safari on Chobe River & full day game drive in the park</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-6-7-chobe-national.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Post 5: Elephant Sands -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0GaMGY4xnGHxuQHXjl8QovOlSY-8eHs74p89Hfo1vv_w8KckDqQkTF3a8WF-bvsgIPi-Oinba_l3UCfdjW-4hmQRchm7Ey5TyAwbkcmZMdq0APfxsHo94CSrtPuSQ65k6sqo_Wl0zG2Ims8X44ldn6V9Yb5uZhEiRC4_t2Ddh5a3fhq0dMvFqVvgMyL4-/s2548/elephant-sands_0009.jpg');">
+                        <div class="post-day">Day 8</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Elephant Sands</h4>
+                        <p class="post-excerpt">Afternoon game drive & sleeping by the waterhole with elephants</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-day-8-elephant-sands.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Post 6: Meerkats & Salt Pans -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqVxvK6Jz0nS4qE9eaOg35L3Df3ZYzAglNnDr3W8Y_t03xTt74356BbcDlCu9SLJ9HeVoPk-JpjyQJeUjXcIusWLtgoN4YIh0wQqRMr0V6gI7-sd0G8dfo9Cv2PjZR4OY6pDgfNevPiG-ICqBR2GqLc9-hXfKj0hny5i9t1oKBoXnRha9IRLwYIwPhTrYO/s16000/rena-meerkats_0003.jpg');">
+                        <div class="post-day">Days 9-10</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Meerkats & Makgadikgadi Salt Pans</h4>
+                        <p class="post-excerpt">Meeting meerkats and exploring the vast salt pans of Botswana</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-day-9-10-meerkats-saltpans.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Okavango & Moremi Region -->
+        <div class="destination-section">
+            <h3 class="destination-title">
+                <span class="lang-en">Okavango Delta & Moremi Game Reserve</span>
+                <span class="lang-de">Okavango-Delta & Moremi-Wildreservat</span>
+            </h3>
+            
+            <div class="posts-grid">
+                <!-- Post 7: Okavango -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWq5e9lBktycFIK3wjRjDO4tvqmj3JgVJc9yYYsusJy4bsmvu8qyEVfBG_PDAGg8yXO4YG0TFbagkgfULqiepshQZlwTX9LZiSvrc_1157inmOqRCCc1EbRWA1WI6cyFDoNiLCUcnpdKiY1Ns1l8tdM1PIoexYBxnsxJPafS8dySquntKl8rCLPmDZun22/s16000/o-delta-flight_0009.jpg');">
+                        <div class="post-day">Days 10-11</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Okavango Delta</h4>
+                        <p class="post-excerpt">Exploring the delta by water (mokoro canoe) and air (helicopter)</p>
+                        <a href="https://two2ontour.blogspot.com/2025/05/zim-bots-2025-days-1011-okavango-delta.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Post 8: Moremi & Khwai -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggmIi7_ybp4NpZsh3gp5nZHDhHXq2uy3iE1Pv4c_EPwt2lKYL3Y9e5ceiVFVzHeUBh5_kXrlhZ4hc6beYTYp6D21Tq2hdn8c7t7jNBS3VPkFumg5zFMjPdC6EeZmHMW1yxr_la3fZEI97aCd4b9xEwVVKuZsVaW8eUdwB4452gI8RQlGIRqJ75Mgiboo1R/s1750/moremi_0010.jpg');">
+                        <div class="post-day">Days 12-14</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Moremi Game Reserve & Khwai</h4>
+                        <p class="post-excerpt">Safari and wild camping in Botswana's pristine wilderness</p>
+                        <a href="https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-12-14-camping-safari.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Placeholder third card to maintain grid -->
+                <div class="post-card" style="visibility: hidden;">
+                    <div class="post-image"></div>
+                    <div class="post-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Return to Johannesburg -->
+        <div class="destination-section">
+            <h3 class="destination-title">
+                <span class="lang-en">Return to Johannesburg</span>
+                <span class="lang-de">Rückkehr nach Johannesburg</span>
+            </h3>
+            
+            <div class="posts-grid">
+                <!-- Post 9: Lesedi -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjChzwcqjP8w9N33oj4ILvHGyr19SyUvwn_VIc0QGupCj0Bb_Jz_N24ONeCIJ6DlgnrbUi-s6cVpD97BHaaKyriZwTsHjkFoHIpzqkqF4F5oTDKm7xD1vgOrbtUeOW-zNDtpVi4OmwjH5JwUEto9CEcvTKaq1nezk6ZCpm7xbAizuzidzPt376fd3806fP6/s1750/lesedi_0008.jpg');">
+                        <div class="post-day">Days 15-16</div>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Lesedi Cultural Village</h4>
+                        <p class="post-excerpt">Learning about South African tribes and traditions before departure</p>
+                        <a href="https://two2ontour.blogspot.com/2025/05/zim-bots-2025-days-14-16-lesedi.html" class="post-link">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Placeholder cards to maintain grid -->
+                <div class="post-card" style="visibility: hidden;">
+                    <div class="post-image"></div>
+                    <div class="post-content"></div>
+                </div>
+                <div class="post-card" style="visibility: hidden;">
+                    <div class="post-image"></div>
+                    <div class="post-content"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Copyright by Verena & Nicolas, 2 On Tour</p>
+    </footer>
+
+
+    <script>
+        function switchLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.body.setAttribute('data-lang', savedLang);
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if ((savedLang === 'en' && btn.textContent === 'EN') ||
+                    (savedLang === 'de' && btn.textContent === 'DE')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
