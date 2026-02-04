@@ -1038,9 +1038,8 @@
             document.querySelectorAll('[data-lang="en"]').forEach(b => b.classList.remove('active'));
         }
 
-        // SMART: Auto-detect current blog URL
-        const currentBlogUrl = window.location.hostname;
-        const blogFeedUrl = `https://${currentBlogUrl}/feeds/posts/default`;
+        // Blog feed URL - always pull from Blogger
+        const blogFeedUrl = 'https://two2ontour.blogspot.com/feeds/posts/default';
 
         // Carousel state
         let currentIndex = 0;
