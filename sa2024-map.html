@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Africa 2024 Route Map - 2 on Tour</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+        }
+
+        .map-header {
+            background: #A67B5B;
+            color: white;
+            padding: 1rem 5%;
+            text-align: center;
+        }
+
+        .map-header h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .map-header p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        #map {
+            height: calc(100vh - 100px);
+            width: 100%;
+        }
+
+        .legend {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .legend h4 {
+            margin-bottom: 1rem;
+            color: #A67B5B;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .legend-item {
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .kruger { background: #8B7355; }
+        .garden { background: #6B8E7F; }
+        .karoo { background: #D4A574; }
+        .west-coast { background: #C17B5B; }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            padding: 0;
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        .popup-content {
+            padding: 1rem;
+        }
+
+        .popup-content h3 {
+            color: #A67B5B;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .popup-content .day {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-content p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .map-header h1 {
+                font-size: 1.2rem;
+            }
+            
+            #map {
+                height: calc(100vh - 80px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="map-header">
+        <h1>South Africa 2024: Kruger to Cape</h1>
+        <p>21 Days | 4 Regions | Safari, Coast, Wine & Culture</p>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on South Africa
+        const map = L.map('map').setView([-29.5, 24.5], 6);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Define locations with coordinates in chronological order
+        const locations = [
+            // Kruger & Panorama Route (Days 1-8)
+            { name: 'Johannesburg', coords: [-26.2041, 28.0473], day: 'Day 1', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-1-johannesburg-to.html' },
+            { name: 'Graskop', coords: [-24.9333, 30.8500], day: 'Days 1-2', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-1-johannesburg-to.html' },
+            { name: 'Panorama Route', coords: [-24.8500, 30.8000], day: 'Day 2', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/deutsche-version-south-africa-day-2.html' },
+            { name: 'Blyde River Canyon', coords: [-24.5597, 30.7919], day: 'Day 3', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-3-blyde-river.html' },
+            { name: 'Klaserie Private Reserve', coords: [-24.3000, 31.1500], day: 'Days 3-5', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-days-3-5-klaserie.html' },
+            { name: 'Kruger National Park', coords: [-23.9884, 31.5547], day: 'Days 5-7', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-5-self-drive.html' },
+            { name: 'Dullstroom', coords: [-25.4167, 30.0833], day: 'Day 8', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-8-back-to.html' },
+            { name: 'Johannesburg', coords: [-26.2041, 28.0473], day: 'Day 8', region: 'kruger', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-8-back-to.html' },
+            
+            // Garden Route (Days 9-11, 14)
+            { name: 'Gqeberha (Port Elizabeth)', coords: [-33.9850, 25.6022], day: 'Day 9', region: 'garden', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-9-off-to-garden.html' },
+            { name: 'Tsitsikamma National Park', coords: [-33.9705, 23.8939], day: 'Days 9-10', region: 'garden', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-day-10-tsitsikamma.html' },
+            { name: 'Knysna', coords: [-34.0364, 23.0471], day: 'Day 10', region: 'garden', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-day-10-tsitsikamma.html' },
+            { name: 'Plettenberg Bay', coords: [-34.0527, 23.3716], day: 'Day 11', region: 'garden', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-11-plettenberg.html' },
+            
+            // Klein Karoo (Days 12-13)
+            { name: 'Oudtshoorn', coords: [-33.5931, 22.2007], day: 'Day 12', region: 'karoo', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-12-klein-karoo.html' },
+            { name: 'Route 62', coords: [-33.8116, 20.0138], day: 'Day 13', region: 'karoo', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-13-route-62.html' },
+            
+            // Garden Route continued (Day 14)
+            { name: 'Cape Agulhas', coords: [-34.8333, 20.0167], day: 'Day 14', region: 'garden', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-14-cape-agulhas.html' },
+            { name: 'Hermanus', coords: [-34.4187, 19.2345], day: 'Day 14', region: 'garden', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-14-cape-agulhas.html' },
+            
+            // West Coast & Cape Town (Days 15-21)
+            { name: 'Betty\'s Bay', coords: [-34.3667, 18.9167], day: 'Day 15', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-15-clarence-drive.html' },
+            { name: 'Franschhoek', coords: [-33.9167, 19.1333], day: 'Days 15-16', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-16-winelands.html' },
+            { name: 'Darling', coords: [-33.3833, 18.3667], day: 'Day 16', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-16-winelands.html' },
+            { name: 'West Coast National Park', coords: [-33.1167, 18.0500], day: 'Day 17', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-17-west-coast.html' },
+            { name: 'Simonstown', coords: [-34.1925, 18.4375], day: 'Day 17', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-17-west-coast.html' },
+            { name: 'Cape of Good Hope', coords: [-34.3567, 18.4972], day: 'Day 18', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-18-cape-of-good.html' },
+            { name: 'Chapman\'s Peak Drive', coords: [-34.0833, 18.3500], day: 'Day 18', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-18-cape-of-good.html' },
+            { name: 'Cape Town', coords: [-33.9249, 18.4241], day: 'Day 19', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-19-cape-town.html' },
+            { name: 'Kirstenbosch Botanical Gardens', coords: [-33.9883, 18.4328], day: 'Day 20', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-19-cape-town.html' },
+            { name: 'Hout Bay', coords: [-34.0333, 18.3500], day: 'Day 20', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-19-cape-town.html' },
+            { name: 'Table Mountain', coords: [-33.9628, 18.4098], day: 'Day 21', region: 'west-coast', link: 'https://two2ontour.blogspot.com/2025/09/south-africa-2024-day-21-table-mountain.html' }
+        ];
+
+        // Define marker colors matching the regions
+        const markerColors = {
+            kruger: '#8B7355',
+            garden: '#6B8E7F',
+            karoo: '#D4A574',
+            'west-coast': '#C17B5B'
+        };
+
+        // Create custom icon function
+        function createCustomIcon(color) {
+            return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+        }
+
+        // Add markers
+        locations.forEach(location => {
+            const marker = L.marker(location.coords, {
+                icon: createCustomIcon(markerColors[location.region])
+            }).addTo(map);
+
+            const popupContent = `
+                <div class="popup-content">
+                    <h3>${location.name}</h3>
+                    <div class="day"><strong>${location.day}</strong></div>
+                    <a href="${location.link}" target="_blank" style="color: #A67B5B; text-decoration: none; font-weight: bold;">Read Blog Post →</a>
+                </div>
+            `;
+
+            marker.bindPopup(popupContent);
+        });
+
+        // Draw route lines
+        const routeCoords = locations.map(loc => loc.coords);
+        const routeLine = L.polyline(routeCoords, {
+            color: '#A67B5B',
+            weight: 3,
+            opacity: 0.7,
+            dashArray: '10, 10'
+        }).addTo(map);
+
+        // Add legend
+        const legend = L.control({ position: 'bottomright' });
+        legend.onAdd = function(map) {
+            const div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `
+                <h4>Route Key</h4>
+                <div class="legend-item"><div class="legend-icon kruger"></div> Kruger & Panorama Route (Days 1-8)</div>
+                <div class="legend-item"><div class="legend-icon garden"></div> Garden Route (Days 9-11, 14)</div>
+                <div class="legend-item"><div class="legend-icon karoo"></div> Klein Karoo (Days 12-13)</div>
+                <div class="legend-item"><div class="legend-icon west-coast"></div> West Coast & Cape Town (Days 15-21)</div>
+            `;
+            return div;
+        };
+        legend.addTo(map);
+
+        // Fit bounds to show all markers
+        map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
+    </script>
+
+</body>
+</html>
