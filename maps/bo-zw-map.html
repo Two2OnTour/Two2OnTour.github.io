@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botswana & Zimbabwe 2025 Route Map - 2 on Tour</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+        }
+
+        .map-header {
+            background: #5B6D5B;
+            color: white;
+            padding: 1rem 5%;
+            text-align: center;
+        }
+
+        .map-header h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .map-header p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        #map {
+            height: calc(100vh - 100px);
+            width: 100%;
+        }
+
+        .legend {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .legend h4 {
+            margin-bottom: 1rem;
+            color: #A67B5B;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .legend-item {
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .johannesburg { background: #8B7355; }
+        .zimbabwe { background: #A67B5B; }
+        .northern-bw { background: #5B6D5B; }
+        .central-bw { background: #E8DCC4; border: 2px solid #A67B5B !important; }
+        .okavango { background: #6B8E6B; }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            padding: 0;
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        .popup-content {
+            padding: 1rem;
+        }
+
+        .popup-content h3 {
+            color: #5B6D5B;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .popup-content .day {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-content p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .map-header h1 {
+                font-size: 1.2rem;
+            }
+            
+            #map {
+                height: calc(100vh - 80px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="map-header">
+        <h1>Botswana & Zimbabwe 2025</h1>
+        <p>Victoria Falls, Chobe, Okavango Delta & More | 16 Days</p>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on Botswana/Zimbabwe
+        const map = L.map('map').setView([-19.5, 24.5], 6);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Define locations with coordinates
+        const locations = [
+            // South Africa & Zimbabwe
+            { name: 'Johannesburg', coords: [-26.2041, 28.0473], day: 'Days 1-2', region: 'johannesburg', description: 'Arrival and layover before Victoria Falls', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-1-2-arrivals-in.html' },
+            { name: 'Victoria Falls Town', coords: [-17.9243, 25.8567], day: 'Days 2, 4-6', region: 'zimbabwe', description: 'Base for Hwange NP and Victoria Falls visits', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-4-5-victoria-falls.html' },
+            { name: 'Hwange National Park', coords: [-18.6500, 26.5000], day: 'Days 2-4', region: 'zimbabwe', description: 'Safari in Zimbabwe\'s largest national park', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-2-4-hwange-national.html' },
+            { name: 'Victoria Falls (Zimbabwe)', coords: [-17.9244, 25.8569], day: 'Days 4-5', region: 'zimbabwe', description: 'The falls from Zimbabwe side', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-4-5-victoria-falls.html' },
+            { name: 'Victoria Falls (Zambia)', coords: [-17.9271, 25.8544], day: 'Day 5', region: 'zimbabwe', description: 'The falls from Zambia side', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-4-5-victoria-falls.html' },
+            { name: 'Zambezi National Park', coords: [-17.8833, 25.7500], day: 'Day 6', region: 'zimbabwe', description: 'Morning safari along the Zambezi', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-4-5-victoria-falls.html' },
+            
+            // Northern Botswana
+            { name: 'Chobe Riverfront', coords: [-17.8333, 25.1667], day: 'Days 6-7', region: 'northern-bw', description: 'Boat safari on Chobe River', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-6-7-chobe-national.html' },
+            { name: 'Chobe National Park', coords: [-18.5000, 24.5000], day: 'Day 7', region: 'northern-bw', description: 'Full day game drive in Chobe', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-6-7-chobe-national.html' },
+            { name: 'Elephant Sands', coords: [-19.4667, 26.1833], day: 'Day 8', region: 'northern-bw', description: 'Waterhole camping with elephants', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-day-8-elephant-sands.html' },
+            
+            // Central Botswana
+            { name: 'Makgadikgadi Pans', coords: [-20.5500, 25.2500], day: 'Days 9-10', region: 'central-bw', description: 'Salt pans and meerkat experience', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-day-9-10-meerkats-saltpans.html' },
+            
+            // Okavango Region
+            { name: 'Okavango Delta', coords: [-19.2833, 22.9167], day: 'Days 10-11', region: 'okavango', description: 'Mokoro canoe trips and helicopter flight', link: 'https://two2ontour.blogspot.com/2025/05/zim-bots-2025-days-1011-okavango-delta.html' },
+            { name: 'Moremi Game Reserve', coords: [-19.5000, 23.4167], day: 'Days 12-14', region: 'okavango', description: 'Wild camping safari in Moremi', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-12-14-camping-safari.html' },
+            { name: 'Khwai Community Area', coords: [-19.1500, 23.7833], day: 'Days 12-14', region: 'okavango', description: 'Safari and camping in the wild', link: 'https://two2ontour.blogspot.com/2025/09/zim-bots-2025-days-12-14-camping-safari.html' },
+            
+            // Return to South Africa
+            { name: 'Lesedi Cultural Village', coords: [-25.9167, 28.2167], day: 'Days 15-16', region: 'johannesburg', description: 'South African tribal culture experience', link: 'https://two2ontour.blogspot.com/2025/05/zim-bots-2025-days-14-16-lesedi.html' }
+        ];
+
+        // Define marker colors (updated to match website)
+        const markerColors = {
+            johannesburg: '#8B7355',
+            zimbabwe: '#A67B5B',
+            'northern-bw': '#5B6D5B',
+            'central-bw': '#E8DCC4',
+            okavango: '#6B8E6B'
+        };
+
+        // Create custom icon function
+        function createCustomIcon(color) {
+            return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+        }
+
+        // Add markers
+        locations.forEach(location => {
+            const marker = L.marker(location.coords, {
+                icon: createCustomIcon(markerColors[location.region])
+            }).addTo(map);
+
+            const popupContent = `
+                <div class="popup-content">
+                    <h3>${location.name}</h3>
+                    <div class="day"><strong>${location.day}</strong></div>
+                    <p>${location.description}</p>
+                    <a href="${location.link}" target="_blank" style="color: #5B6D5B; text-decoration: none; font-weight: bold;">Read Blog Post →</a>
+                </div>
+            `;
+
+            marker.bindPopup(popupContent);
+        });
+
+        // Draw route lines
+        const routeCoords = locations.map(loc => loc.coords);
+        const routeLine = L.polyline(routeCoords, {
+            color: '#5B6D5B',
+            weight: 3,
+            opacity: 0.7,
+            dashArray: '10, 10'
+        }).addTo(map);
+
+        // Add legend
+        const legend = L.control({ position: 'bottomright' });
+        legend.onAdd = function(map) {
+            const div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `
+                <h4>Route Key</h4>
+                <div class="legend-item"><div class="legend-icon johannesburg"></div> Johannesburg (Start/End)</div>
+                <div class="legend-item"><div class="legend-icon zimbabwe"></div> Zimbabwe (Vic Falls & Hwange)</div>
+                <div class="legend-item"><div class="legend-icon northern-bw"></div> Northern Botswana (Chobe)</div>
+                <div class="legend-item"><div class="legend-icon central-bw"></div> Central Botswana (Salt Pans)</div>
+                <div class="legend-item"><div class="legend-icon okavango"></div> Okavango & Moremi</div>
+            `;
+            return div;
+        };
+        legend.addTo(map);
+
+        // Fit bounds to show all markers
+        map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
+    </script>
+
+</body>
+</html>
