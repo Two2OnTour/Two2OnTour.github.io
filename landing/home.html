@@ -162,6 +162,32 @@
         .nav-links a:hover {
             color: #8b7355;
         }
+        
+        /* Language Toggle in Nav - matching SA/BZ pages */
+        .lang-toggle-nav {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .lang-btn-nav {
+            padding: 0.35rem 0.8rem;
+            background: transparent;
+            border: 1px solid #d0cbc4;
+            color: #4a4a4a;
+            font-family: 'Georgia', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn-nav:hover,
+        .lang-btn-nav.active {
+            background: #A67B5B;
+            color: white;
+            border-color: #A67B5B;
+        }
 
         /* Hero Section */
         .hero {
@@ -782,6 +808,10 @@
             <li><a href="#gallery" class="lang-en">Latest Posts</a><a href="#gallery" class="lang-de">Neueste Beiträge</a></li>
             <li><a href="https://www.instagram.com/renastravelsandtastes">Instagram</a></li>
         </ul>
+        <div class="lang-toggle-nav">
+            <button class="lang-btn-nav active" data-lang="en">EN</button>
+            <button class="lang-btn-nav" data-lang="de">DE</button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -809,8 +839,8 @@
             <p class="lang-de">Begib dich auf einen unvergesslichen 3-wöchigen Roadtrip durch Südafrikas spektakulärste Landschaften. Erlebe erstklassige Safari im Kruger Nationalpark, wo Elefanten, Löwen und Nashörner frei in ihrer natürlichen Umgebung leben.</p>
             <p class="lang-en">Journey along the scenic Garden Route, explore the dramatic Klein Karoo and Swartberg Pass, discover the vibrant culture of Cape Town, taste world-renowned wines in the Winelands, and witness whales along the pristine West Coast.</p>
             <p class="lang-de">Reise entlang der malerischen Garden Route, erkunde die dramatische Klein Karoo und den Swartberg Pass, entdecke die lebendige Kultur von Kapstadt, probiere weltbekannte Weine in den Winelands und beobachte Wale an der unberührten Westküste.</p>
-            <a href="https://two2ontour.blogspot.com/search/label/South%20Africa" class="btn lang-en">Find Out More</a>
-            <a href="https://two2ontour.blogspot.com/search/label/South%20Africa" class="btn lang-de">Mehr Erfahren</a>
+            <a href="https://two2ontour.github.io/landing/sa-2024.html" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.github.io/landing/sa-2024.html" class="btn lang-de">Mehr Erfahren</a>
         </div>
         <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0aDd24BPmpAVGdcwiYArA-KLj7OWmANjLuNANRxOj5rWegLDfy-ES1MghCk6P8H-50CeKl_YUO9mtz6Ybtjdqk4kb1vPhK1l7Pm_h0sr6v-Iwzubnbqg545o_kaIvbXL9Q3TjCIwDzYCNLsgsGcBJrxU8F2UGmLt-dOAoufy3MWp80mGhwD9yljp0p7fz/s2546/blyderiverdam_0002.jpg');"></div>
     </section>
@@ -827,8 +857,8 @@
             <h3 class="lang-de">Okavango-Delta</h3>
             <p class="lang-en">Experience the pristine wilderness of the Okavango Delta by helicopter and traditional mokoro canoe. Explore Chobe National Park with its incredible elephant herds, camp under the stars in Moremi and Khwai, and encounter curious meerkats at the vast Makgadikgadi Salt Pans.</p>
             <p class="lang-de">Erlebe die unberührte Wildnis des Okavango-Deltas per Helikopter und traditionellem Mokoro-Kanu. Erkunde den Chobe Nationalpark mit seinen unglaublichen Elefantenherden, campe unter den Sternen in Moremi und Khwai und begegne neugierigen Erdmännchen in den riesigen Makgadikgadi-Salzpfannen.</p>
-            <a href="https://two2ontour.blogspot.com/search/label/Botswana" class="btn lang-en">Find Out More</a>
-            <a href="https://two2ontour.blogspot.com/search/label/Botswana" class="btn lang-de">Mehr Erfahren</a>
+            <a href="https://two2ontour.github.io/landing/bo-zw-2025.html" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.github.io/landing/bo-zw-2025.html" class="btn lang-de">Mehr Erfahren</a>
         </div>
         <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWq5e9lBktycFIK3wjRjDO4tvqmj3JgVJc9yYYsusJy4bsmvu8qyEVfBG_PDAGg8yXO4YG0TFbagkgfULqiepshQZlwTX9LZiSvrc_1157inmOqRCCc1EbRWA1WI6cyFDoNiLCUcnpdKiY1Ns1l8tdM1PIoexYBxnsxJPafS8dySquntKl8rCLPmDZun22/s1750/o-delta-flight_0009.jpg');"></div>
     </section>
@@ -977,16 +1007,16 @@
     </footer>
 
     <script>
-        // Language Toggle
-        const langButtons = document.querySelectorAll('.lang-btn');
+        // Language Toggle - handles BOTH hero buttons AND nav buttons
+        const langButtons = document.querySelectorAll('.lang-btn, .lang-btn-nav');
         
         langButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 const lang = btn.getAttribute('data-lang');
                 
-                // Update active button
-                langButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                // Update active button (for both sets)
+                document.querySelectorAll('.lang-btn, .lang-btn-nav').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll(`[data-lang="${lang}"]`).forEach(b => b.classList.add('active'));
                 
                 // Update body class
                 if (lang === 'de') {
@@ -1004,8 +1034,8 @@
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang === 'de') {
             document.body.classList.add('de-active');
-            document.querySelector('[data-lang="de"]').classList.add('active');
-            document.querySelector('[data-lang="en"]').classList.remove('active');
+            document.querySelectorAll('[data-lang="de"]').forEach(b => b.classList.add('active'));
+            document.querySelectorAll('[data-lang="en"]').forEach(b => b.classList.remove('active'));
         }
 
         // SMART: Auto-detect current blog URL
