@@ -55,7 +55,7 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -64,18 +64,32 @@
         }
 
         .logo {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            font-weight: 300;
-            text-transform: uppercase;
-            color: #A67B5B;
-            text-decoration: none;
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-links {
             display: flex;
             gap: 3rem;
             list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
         }
 
         .nav-links a {
@@ -179,7 +193,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 80px;
         }
 
         .hero::before {
