@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 on Tour - Discover the World</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/safari-landing-styles.css">
+    
+    <!-- Page-specific styles (Home page only) -->
+    <style>
+        /* AGGRESSIVE: Hide ALL Blogger's default elements */
+        header,
+        .header,
+        #header,
+        #header-wrapper,
+        .header-wrapper,
+        .blog-header,
+        .sidebar-wrapper,
+        .blog-pager,
+        .post-footer,
+        .blog-feeds,
+        #blog-pager,
+        .feed-links,
+        .post-feeds,
+        aside,
+        .sidebar,
+        #sidebar,
+        #sidebar-wrapper,
+        .sidebar-right,
+        .footer,
+        #footer-wrapper,
+        .blog-footer,
+        .post-share-buttons,
+        .post-comment-link,
+        .breadcrumbs,
+        .search,
+        .blog-mobile-link,
+        .skippy,
+        .skip-link,
+        #navbar,
+        .navbar,
+        .attribution,
+        .post-timestamp,
+        .post-comment-link,
+        .blog-pager-newer-link,
+        .blog-pager-older-link,
+        .home-link {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* Force body and html to be full width with no margins */
+        html, body {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden !important;
+        }
+
+        /* Make ALL wrapper elements full width */
+        .centered-top-container,
+        .centered-bottom,
+        .centered-top,
+        body > .centered-top-container,
+        .main-inner,
+        .content-inner,
+        .region-inner,
+        #main-wrapper,
+        .content-wrapper,
+        .main,
+        #main,
+        .page,
+        .post,
+        .post-body,
+        .content-wrapper > *,
+        #main > *,
+        body > * {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Remove any max-width constraints */
+        .content-outer,
+        .content-fauxcolumn-outer,
+        .region-inner.content-inner {
+            max-width: none !important;
+        }
+
+        /* HOME PAGE SPECIFIC: Hero with custom background */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgI6TC3WKn5paMeLrhrs6AfKsNEEm9CCmEQv1fy-nEmt13sXjxnMKgQ_DMHDXvkcjfsoVIX_H0PMnvd3_WRvUmzYQG7EXNvHaDv9lwR6YkCh3puu3nieMElTraH3F4o8h0-QXT6K12JDldihYJsWtjoriua1JUAro1xz-pUMsL13xhiJyNz9bN_Wg4M9C57/s3960/heroToT.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            opacity: 0.95;
+        }
+
+        /* HOME PAGE: Language Toggle in Hero */
+        .language-toggle {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            padding: 0.7rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            font-family: 'Georgia', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d2d2d;
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* HOME PAGE: Destination Sections Layout */
+        .destination-section {
+            display: block !important;
+            position: relative !important;
+            width: 100% !important;
+            min-height: 600px !important;
+            margin-bottom: 100px !important;
+            overflow: hidden !important;
+        }
+
+        .destination-content {
+            width: 40% !important;
+            min-height: 600px !important;
+            padding: 5rem 6% !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            background-color: #F5F0E8 !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .destination-image {
+            width: 60% !important;
+            height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            z-index: 1 !important;
+            background-size: cover !important;
+            background-position: center !important;
+            transform: scale(1.2) !important; 
+        }
+
+        .destination-section:not(.reverse) .destination-content { 
+            margin-left: 0 !important; 
+        }
+        .destination-section:not(.reverse) .destination-image { 
+            right: 0 !important; 
+        }
+
+        .destination-section.reverse .destination-content { 
+            margin-left: 60% !important; 
+        }
+        .destination-section.reverse .destination-image { 
+            left: 0 !important; 
+        }
+
+        .destination-content h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: #2d2d2d;
+        }
+
+        .destination-content h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2d2d2d;
+        }
+
+        .destination-content p {
+            margin-bottom: 1.5rem;
+            color: #5a5a5a;
+            font-size: 0.95rem;
+        }
+
+        .dark-destination .destination-content {
+            background-color: #6B8E7F !important;
+        }
+        
+        .dark-destination h2, 
+        .dark-destination h3, 
+        .dark-destination p {
+            color: #ffffff !important;
+        }
+
+        .dark-destination .btn {
+            border-color: white;
+            color: white;
+        }
+
+        .dark-destination .btn:hover {
+            background: white;
+            color: #6B8E7F;
+        }
+
+        /* HOME PAGE: Quote Section */
+        .quote-section {
+            padding: 8rem 5%;
+            text-align: center;
+            background: #F5F0E8;
+        }
+
+        .quote-section blockquote {
+            font-size: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #2d2d2d;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .quote-section cite {
+            font-style: normal;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* HOME PAGE: Gallery/Carousel */
+        .gallery {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            color: #2d2d2d;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-grid {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item {
+            min-width: calc(33.333% - 1.35rem);
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3), transparent);
+            color: #fff;
+            padding: 1.5rem;
+            font-size: 1rem;
+            text-align: left;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(45, 45, 45, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: -25px;
+        }
+
+        .carousel-nav.next {
+            right: -25px;
+        }
+
+        .carousel-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-nav:disabled:hover {
+            transform: translateY(-50%) scale(1);
+        }
+
+        /* HOME PAGE: YouTube Section */
+        .youtube-section {
+            padding: 5rem 5%;
+            background: #F5F0E8;
+        }
+
+        .youtube-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            color: #2d2d2d;
+        }
+
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .youtube-card {
+            background: white;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .youtube-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .youtube-thumbnail {
+            width: 100%;
+            padding-top: 56.25%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .youtube-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .youtube-play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Mobile Responsive - HOME PAGE SPECIFIC */
+        @media (max-width: 968px) {
+            .destination-section { 
+                height: auto !important; 
+            }
+            .destination-content { 
+                width: 100% !important; 
+                margin-left: 0 !important; 
+                min-height: auto !important; 
+            }
+            .destination-image { 
+                position: relative !important; 
+                width: 100% !important; 
+                height: 400px !important; 
+                transform: scale(1) !important; 
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .youtube-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                min-width: calc(50% - 1rem);
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .destination-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.5rem;
+            }
+
+            .gallery-item {
+                min-width: 100%;
+            }
+
+            .language-toggle {
+                bottom: 2rem;
+            }
+
+            .lang-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPNy4o5YqHArTiiEysfK1xmX3E1hEImNGvX8M1rSqNYqVQNBFzBBlulHpb-bw2JJox4oQcqrmIPZayLbFZNJlqzMd1GudTzpOhooRjD50yDvzpSUtNmkAW6E9fWE-cup5zCEDGWA8S4dnJhgDNxE1SH2oq-Q3U_411MtxWnv2LUFhdJMOp-DR1btNeX3CW/s1500/TWOonTOUR-logo02.png" alt="2 on Tour">
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="https://two2ontour.blogspot.com/" class="lang-en">Home</a><a href="https://two2ontour.blogspot.com/" class="lang-de">Startseite</a></li>
+                <li><a href="https://two2ontour.blogspot.com/p/africa-afrika.html">Africa</a></li>
+                <li><a href="#gallery" class="lang-en">Latest Posts</a><a href="#gallery" class="lang-de">Neueste Beiträge</a></li>
+                <li><a href="https://www.instagram.com/renastravelsandtastes">Instagram</a></li>
+            </ul>
+            <div class="lang-toggle-nav">
+                <button class="lang-btn-nav active" data-lang="en">EN</button>
+                <button class="lang-btn-nav" data-lang="de">DE</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="lang-en">Discover Your<br>Next Adventure</h1>
+            <h1 class="lang-de">Entdecke Dein<br>Nächstes Abenteuer</h1>
+            <p class="lang-en">Join Rena & Nick on their travels. Explore safari stories, travel guides, and breathtaking photography from around the world</p>
+            <p class="lang-de">Begleite Rena & Nick auf ihren Reisen. Entdecke Safari-Geschichten, Reiseführer und atemberaubende Fotografie aus aller Welt</p>
+        </div>
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="de">Deutsch</button>
+        </div>
+    </section>
+
+    <!-- Destination 1: Africa - South Africa -->
+    <section class="destination-section">
+        <div class="destination-content">
+            <h2 class="lang-en">South Africa</h2>
+            <h2 class="lang-de">Südafrika</h2>
+            <h3 class="lang-en">Kruger to Cape</h3>
+            <h3 class="lang-de">Vom Kruger bis zum Kap</h3>
+            <p class="lang-en">Embark on an unforgettable 3-week road trip through South Africa's most spectacular landscapes. Experience world-class safari in Kruger National Park, where elephants, lions, and rhinos roam freely in their natural habitat.</p>
+            <p class="lang-de">Begib dich auf einen unvergesslichen 3-wöchigen Roadtrip durch Südafrikas spektakulärste Landschaften. Erlebe erstklassige Safari im Kruger Nationalpark, wo Elefanten, Löwen und Nashörner frei in ihrer natürlichen Umgebung leben.</p>
+            <p class="lang-en">Journey along the scenic Garden Route, explore the dramatic Klein Karoo and Swartberg Pass, discover the vibrant culture of Cape Town, taste world-renowned wines in the Winelands, and witness whales along the pristine West Coast.</p>
+            <p class="lang-de">Reise entlang der malerischen Garden Route, erkunde die dramatische Klein Karoo und den Swartberg Pass, entdecke die lebendige Kultur von Kapstadt, probiere weltbekannte Weine in den Winelands und beobachte Wale an der unberührten Westküste.</p>
+            <a href="https://two2ontour.github.io/landing/sa-2024.html" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.github.io/landing/sa-2024.html" class="btn lang-de">Mehr Erfahren</a>
+        </div>
+        <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0aDd24BPmpAVGdcwiYArA-KLj7OWmANjLuNANRxOj5rWegLDfy-ES1MghCk6P8H-50CeKl_YUO9mtz6Ybtjdqk4kb1vPhK1l7Pm_h0sr6v-Iwzubnbqg545o_kaIvbXL9Q3TjCIwDzYCNLsgsGcBJrxU8F2UGmLt-dOAoufy3MWp80mGhwD9yljp0p7fz/s2546/blyderiverdam_0002.jpg');"></div>
+    </section>
+
+    <!-- Destination 2: Botswana & Zimbabwe -->
+    <section class="destination-section reverse dark-destination">
+        <div class="destination-content">
+            <h2>Botswana &<br>Zimbabwe</h2>
+            <h3 class="lang-en">Victoria Falls</h3>
+            <h3 class="lang-de">Victoriafälle</h3>
+            <p class="lang-en">Stand in awe before one of the Seven Natural Wonders of the World. The thundering Victoria Falls creates a spectacle of mist and rainbows that will leave you breathless.</p>
+            <p class="lang-de">Stehe ehrfürchtig vor einem der Sieben Weltwunder der Natur. Die donnernden Victoriafälle erzeugen ein Spektakel aus Nebel und Regenbögen, das dich atemlos zurücklässt.</p>
+            <h3 class="lang-en">Okavango Delta</h3>
+            <h3 class="lang-de">Okavango-Delta</h3>
+            <p class="lang-en">Experience the pristine wilderness of the Okavango Delta by helicopter and traditional mokoro canoe. Explore Chobe National Park with its incredible elephant herds, camp under the stars in Moremi and Khwai, and encounter curious meerkats at the vast Makgadikgadi Salt Pans.</p>
+            <p class="lang-de">Erlebe die unberührte Wildnis des Okavango-Deltas per Helikopter und traditionellem Mokoro-Kanu. Erkunde den Chobe Nationalpark mit seinen unglaublichen Elefantenherden, campe unter den Sternen in Moremi und Khwai und begegne neugierigen Erdmännchen in den riesigen Makgadikgadi-Salzpfannen.</p>
+            <a href="https://two2ontour.github.io/landing/bo-zw-2025.html" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.github.io/landing/bo-zw-2025.html" class="btn lang-de">Mehr Erfahren</a>
+        </div>
+        <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWq5e9lBktycFIK3wjRjDO4tvqmj3JgVJc9yYYsusJy4bsmvu8qyEVfBG_PDAGg8yXO4YG0TFbagkgfULqiepshQZlwTX9LZiSvrc_1157inmOqRCCc1EbRWA1WI6cyFDoNiLCUcnpdKiY1Ns1l8tdM1PIoexYBxnsxJPafS8dySquntKl8rCLPmDZun22/s1750/o-delta-flight_0009.jpg');"></div>
+    </section>
+
+    <!-- Destination 3: Safari Know-How -->
+    <section class="destination-section">
+        <div class="destination-content">
+            <h2 class="lang-en">Safari<br>Know-How</h2>
+            <h2 class="lang-de">Safari<br>Know-How</h2>
+            <p class="lang-en">Planning your first safari? We've got you covered with essential guides and tips from our own African adventures.</p>
+            <p class="lang-de">Planst du deine erste Safari? Wir haben dich mit wichtigen Guides und Tipps aus unseren eigenen afrikanischen Abenteuern abgedeckt.</p>
+            <h3 class="lang-en">Self-Drive Safari Guide</h3>
+            <h3 class="lang-de">Self-Drive Safari Führer</h3>
+            <p class="lang-en">Learn how to plan and execute your own self-drive safari in Kruger National Park. From choosing the best camps to animal spotting techniques, discover everything you need for an independent safari adventure.</p>
+            <p class="lang-de">Lerne, wie du deine eigene Self-Drive Safari im Kruger Nationalpark planst und durchführst. Von der Auswahl der besten Camps bis zu Techniken zur Tierbeobachtung - entdecke alles, was du für ein unabhängiges Safari-Abenteuer brauchst.</p>
+            <h3 class="lang-en">Know Your Safari Animals</h3>
+            <h3 class="lang-de">Kenne deine Safari-Tiere</h3>
+            <p class="lang-en">Get to know the incredible wildlife you'll encounter on your African safari. From the Big Five to countless bird species, understand the behaviors and habitats of Africa's magnificent creatures.</p>
+            <p class="lang-de">Lerne die unglaubliche Tierwelt kennen, der du auf deiner afrikanischen Safari begegnen wirst. Von den Big Five bis zu unzähligen Vogelarten - verstehe das Verhalten und die Lebensräume von Afrikas prächtigen Kreaturen.</p>
+            <a href="https://two2ontour.blogspot.com/p/safari-animals.html" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.blogspot.com/p/safari-animals.html" class="btn lang-de">Mehr Erfahren</a>
+        </div>
+        <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqVxvK6Jz0nS4qE9eaOg35L3Df3ZYzAglNnDr3W8Y_t03xTt74356BbcDlCu9SLJ9HeVoPk-JpjyQJeUjXcIusWLtgoN4YIh0wQqRMr0V6gI7-sd0G8dfo9Cv2PjZR4OY6pDgfNevPiG-ICqBR2GqLc9-hXfKj0hny5i9t1oKBoXnRha9IRLwYIwPhTrYO/s2273/rena-meerkats_0003.jpg');"></div>
+    </section>
+
+    <!-- Destination 4: Europe (Coming Soon) -->
+    <section class="destination-section reverse">
+        <div class="destination-content">
+            <h2>Europe</h2>
+            <p class="lang-en">From the romantic streets of Paris to the ancient ruins of Rome, discover the timeless charm of European cities. Explore cobblestone alleyways, world-class museums, and culinary delights perfected over centuries.</p>
+            <p class="lang-de">Von den romantischen Straßen von Paris bis zu den antiken Ruinen Roms - entdecke den zeitlosen Charme europäischer Städte. Erkunde kopfsteingepflasterte Gassen, Weltklasse-Museen und kulinarische Köstlichkeiten, die über Jahrhunderte perfektioniert wurden.</p>
+            <p class="lang-en">Whether seeking art and culture, breathtaking architecture, or picturesque countryside, Europe offers endless opportunities for unforgettable experiences.</p>
+            <p class="lang-de">Ob du Kunst und Kultur, atemberaubende Architektur oder malerische Landschaften suchst - Europa bietet endlose Möglichkeiten für unvergessliche Erlebnisse.</p>
+            <p class="lang-en"><em>Coming soon - Follow our European adventures!</em></p>
+            <p class="lang-de"><em>Demnächst - Folge unseren europäischen Abenteuern!</em></p>
+            <a href="https://two2ontour.blogspot.com/search/label/Europe" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.blogspot.com/search/label/Europe" class="btn lang-de">Mehr Erfahren</a>
+        </div>
+        <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtfjKYPezkgZKi8fX2YtMd_du55CUnyEhmfp3pe5gqOsuo0gO-8qzCguaxRWaawNgYw1kUJ2XqKADecz2GtpAUu6SgmuYuLXsM5ILCrzO6axxcMOCqOLnBId97aR40G_HX5bYL81m4-GfNjgm6z7xPPkGjmJ26F8b1_h9-JcgzwvDvvXsbsjcgod8AA8Ko/s1600/garda.jpg');"></div>
+    </section>
+
+    <!-- Destination 5: Asia (Coming Soon) -->
+    <section class="destination-section">
+        <div class="destination-content">
+            <h2 class="lang-en">Asia</h2>
+            <h2 class="lang-de">Asien</h2>
+            <h3 class="lang-en">Temples & Traditions</h3>
+            <h3 class="lang-de">Tempel & Traditionen</h3>
+            <p class="lang-en">Immerse yourself in vibrant Asian cultures where ancient temples stand beside modern skyscrapers. Experience Japanese garden serenity, Bangkok's bustling markets, and India's spiritual heritage.</p>
+            <p class="lang-de">Tauche ein in lebendige asiatische Kulturen, wo antike Tempel neben modernen Wolkenkratzern stehen. Erlebe die Ruhe japanischer Gärten, Bangkoks geschäftige Märkte und Indiens spirituelles Erbe.</p>
+            <h3 class="lang-en">Natural Wonders</h3>
+            <h3 class="lang-de">Naturwunder</h3>
+            <p class="lang-en">From Bali's tropical beaches to Nepal's mountain peaks, Asia's diverse landscapes offer adventures for every traveler. Discover hidden waterfalls, terraced rice fields, and pristine islands.</p>
+            <p class="lang-de">Von Balis tropischen Stränden bis zu Nepals Berggipfeln - Asiens vielfältige Landschaften bieten Abenteuer für jeden Reisenden. Entdecke versteckte Wasserfälle, terrassierte Reisfelder und unberührte Inseln.</p>
+            <p class="lang-en"><em>Coming soon - Our Asian journey begins!</em></p>
+            <p class="lang-de"><em>Demnächst - Unsere asiatische Reise beginnt!</em></p>
+            <a href="https://two2ontour.blogspot.com/search/label/Asia" class="btn lang-en">Find Out More</a>
+            <a href="https://two2ontour.blogspot.com/search/label/Asia" class="btn lang-de">Mehr Erfahren</a>
+        </div>
+        <div class="destination-image" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyhsVsdChesC-PJRsR2PEKwBgo_wV13w_vVl45BqnsoEKRVSEBstA-ezGP6cO7H_rEwa46x3yC_Glj1Ckk7kPyZgeypIbyg-3LiwIc7N97_YWbubARCurjLMOFif6h5ZCxhNDAZ366BFO6e23mNHrxbgdYfoohk6U8rJgFIORL2wMETFzO5AeXPxKvP6pn/s1600/asia.jpg');"></div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <blockquote class="lang-en">"We travel not to escape life, but for life not to escape us."</blockquote>
+        <blockquote class="lang-de">"Wir reisen nicht, um dem Leben zu entfliehen, sondern damit das Leben uns nicht entflieht."</blockquote>
+        <cite>— Anonymous</cite>
+    </section>
+
+    <!-- Latest Posts Section with Carousel -->
+    <section class="gallery" id="gallery">
+        <h2 class="lang-en">Latest Posts</h2>
+        <h2 class="lang-de">Neueste Beiträge</h2>
+        <div class="gallery-container">
+            <button class="carousel-nav prev" id="prevBtn" aria-label="Previous">‹</button>
+            <div class="gallery-wrapper">
+                <div class="gallery-grid" id="latest-posts">
+                    <div class="loading lang-en">Loading latest posts...</div>
+                    <div class="loading lang-de">Lade neueste Beiträge...</div>
+                </div>
+            </div>
+            <button class="carousel-nav next" id="nextBtn" aria-label="Next">›</button>
+        </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section class="youtube-section" id="videos">
+        <h2 class="lang-en">Watch Our Adventures</h2>
+        <h2 class="lang-de">Schau Dir Unsere Abenteuer An</h2>
+        <div class="youtube-grid" id="youtube-videos">
+            <!-- YouTube videos will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="lang-en">Get In Touch</h2>
+                <h2 class="lang-de">Kontaktiere Uns</h2>
+                <p class="lang-en">Have questions about our travels? Want to know more about a specific destination? We'd love to hear from you!</p>
+                <p class="lang-de">Hast du Fragen zu unseren Reisen? Möchtest du mehr über ein bestimmtes Reiseziel erfahren? Wir würden uns freuen, von dir zu hören!</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/Two2OnTour" target="_blank" class="social-link" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/two2ontour" target="_blank" class="social-link" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@Two2OnTour" target="_blank" class="social-link" aria-label="YouTube">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form-wrapper">
+                <form class="contact-form" action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required class="lang-en">
+                    <input type="text" name="name" placeholder="Dein Name" required class="lang-de">
+                    <input type="email" name="email" placeholder="Your Email" required class="lang-en">
+                    <input type="email" name="email" placeholder="Deine E-Mail" required class="lang-de">
+                    <input type="text" name="subject" placeholder="Subject" required class="lang-en">
+                    <input type="text" name="subject" placeholder="Betreff" required class="lang-de">
+                    <textarea name="message" rows="5" placeholder="Your Message" required class="lang-en"></textarea>
+                    <textarea name="message" rows="5" placeholder="Deine Nachricht" required class="lang-de"></textarea>
+                    <button type="submit" class="submit-btn lang-en">Send Message</button>
+                    <button type="submit" class="submit-btn lang-de">Nachricht Senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; Copyright by Verena & Nicolas, 2 On Tour</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle - handles BOTH hero buttons AND nav buttons
+        const langButtons = document.querySelectorAll('.lang-btn, .lang-btn-nav');
+        
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                
+                // Update active button (for both sets)
+                document.querySelectorAll('.lang-btn, .lang-btn-nav').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll(`[data-lang="${lang}"]`).forEach(b => b.classList.add('active'));
+                
+                // Update body class
+                if (lang === 'de') {
+                    document.body.classList.add('de-active');
+                } else {
+                    document.body.classList.remove('de-active');
+                }
+                
+                // Save preference
+                localStorage.setItem('preferredLanguage', lang);
+            });
+        });
+        
+        // Load saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang === 'de') {
+            document.body.classList.add('de-active');
+            document.querySelectorAll('[data-lang="de"]').forEach(b => b.classList.add('active'));
+            document.querySelectorAll('[data-lang="en"]').forEach(b => b.classList.remove('active'));
+        }
+
+        // Blog feed URL
+        const blogFeedUrl = 'https://two2ontour.blogspot.com/feeds/posts/default';
+
+        // Carousel state
+        let currentIndex = 0;
+        let totalPosts = 0;
+        const postsPerView = 3;
+
+        // Function to get image from post content or media
+        function getPostImage(post) {
+            if (post.media$thumbnail && post.media$thumbnail.url) {
+                return post.media$thumbnail.url.replace(/\/s72-c/, '/s600').replace(/\/s72\//, '/s600/');
+            }
+            
+            if (post.content && post.content.$t) {
+                const imgMatch = post.content.$t.match(/<img[^>]+src=["']([^"']+)["']/);
+                if (imgMatch && imgMatch[1]) {
+                    return imgMatch[1].replace(/\/s72-c/, '/s600').replace(/\/s\d+\//, '/s600/');
+                }
+            }
+            
+            if (post.summary && post.summary.$t) {
+                const imgMatch = post.summary.$t.match(/<img[^>]+src=["']([^"']+)["']/);
+                if (imgMatch && imgMatch[1]) {
+                    return imgMatch[1].replace(/\/s72-c/, '/s600').replace(/\/s\d+\//, '/s600/');
+                }
+            }
+            
+            return 'https://via.placeholder.com/600x400/8b7355/ffffff?text=2+on+Tour';
+        }
+
+        // Function to create gallery item HTML
+        function createGalleryItem(post) {
+            const title = post.title.$t;
+            const postUrl = post.link.find(link => link.rel === 'alternate').href;
+            const imageUrl = getPostImage(post);
+            
+            const galleryItem = document.createElement('a');
+            galleryItem.href = postUrl;
+            galleryItem.className = 'gallery-item';
+            galleryItem.style.backgroundImage = `url('${imageUrl}')`;
+            galleryItem.setAttribute('title', title);
+            galleryItem.setAttribute('aria-label', title);
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'gallery-item-overlay';
+            overlay.textContent = title;
+            
+            galleryItem.appendChild(overlay);
+            
+            return galleryItem;
+        }
+
+        // Update carousel position
+        function updateCarousel() {
+            const galleryGrid = document.getElementById('latest-posts');
+            const itemWidth = galleryGrid.querySelector('.gallery-item').offsetWidth;
+            const gap = 32;
+            const offset = -(currentIndex * (itemWidth + gap));
+            galleryGrid.style.transform = `translateX(${offset}px)`;
+            
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex >= totalPosts - postsPerView;
+        }
+
+        // Carousel navigation
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentIndex < totalPosts - postsPerView) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        // Load latest posts using JSONP
+        function loadLatestPosts() {
+            const container = document.getElementById('latest-posts');
+            const script = document.createElement('script');
+            const callbackName = 'processBloggerPosts';
+            
+            window[callbackName] = function(data) {
+                try {
+                    container.innerHTML = '';
+                    
+                    if (data.feed && data.feed.entry && data.feed.entry.length > 0) {
+                        totalPosts = data.feed.entry.length;
+                        data.feed.entry.forEach(post => {
+                            container.appendChild(createGalleryItem(post));
+                        });
+                        
+                        setTimeout(() => {
+                            updateCarousel();
+                        }, 100);
+                    } else {
+                        container.innerHTML = '<p class="loading">No posts found.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error processing posts:', error);
+                    container.innerHTML = '<p class="loading">Unable to load posts at this time.</p>';
+                }
+                
+                document.head.removeChild(script);
+                delete window[callbackName];
+            };
+            
+            script.src = `${blogFeedUrl}?alt=json-in-script&callback=${callbackName}&max-results=12&orderby=published`;
+            script.onerror = function() {
+                container.innerHTML = '<p class="loading">Unable to load posts.</p>';
+                document.head.removeChild(script);
+                delete window[callbackName];
+            };
+            
+            document.head.appendChild(script);
+        }
+
+        // YouTube video data
+        const youtubeVideos = [
+            { id: 'V6jwDsNX_TQ', title: '' },
+            { id: 'Ce26qZlJoJY', title: '' },
+            { id: 'W68VU10mtVA', title: '' }
+        ];
+
+        // Load YouTube videos
+        function loadYouTubeVideos() {
+            const container = document.getElementById('youtube-videos');
+            
+            youtubeVideos.forEach(video => {
+                const card = document.createElement('a');
+                card.href = `https://www.youtube.com/watch?v=${video.id}`;
+                card.className = 'youtube-card';
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'youtube-thumbnail';
+                thumbnail.style.backgroundImage = `url('https://img.youtube.com/vi/${video.id}/maxresdefault.jpg')`;
+                
+                const playButton = document.createElement('div');
+                playButton.className = 'youtube-play-button';
+                
+                thumbnail.appendChild(playButton);
+                card.appendChild(thumbnail);
+                container.appendChild(card);
+            });
+        }
+        
+        // Load everything when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                loadLatestPosts();
+                loadYouTubeVideos();
+            });
+        } else {
+            loadLatestPosts();
+            loadYouTubeVideos();
+        }
+
+        // Handle window resize for carousel
+        window.addEventListener('resize', () => {
+            if (totalPosts > 0) {
+                updateCarousel();
+            }
+        });
+    </script>
+
+</body>
+</html>
