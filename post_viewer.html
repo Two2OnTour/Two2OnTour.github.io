@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Loading Post... | 2 on Tour</title>
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #68604D;
+            line-height: 1.8;
+            background: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #68604D;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b75a3c;
+        }
+
+        .lang-toggle-nav {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .lang-btn-nav {
+            padding: 0.35rem 0.8rem;
+            background: transparent;
+            border: 1px solid #D5C7AD;
+            color: #68604D;
+            font-family: 'Georgia', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn-nav:hover,
+        .lang-btn-nav.active {
+            background: #8A8E75;
+            color: white;
+            border-color: #8A8E75;
+        }
+
+        /* Loading State */
+        .loading-container {
+            margin-top: 100px;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid #D5C7AD;
+            border-top: 4px solid #8A8E75;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Post Container */
+        .post-container {
+            max-width: 900px;
+            margin: 100px auto 0;
+            padding: 3rem 5%;
+        }
+
+        /* Post Header */
+        .post-header {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            border-bottom: 2px solid #D5C7AD;
+            margin-bottom: 3rem;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            color: #8A8E75;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .post-header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #68604D;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        /* Post Content */
+        .post-content {
+            color: #68604D;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .post-content h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 2rem 0 1.5rem;
+            color: #68604D;
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 3rem 0 1.5rem;
+            color: #8A8E75;
+            border-bottom: 2px solid #D5C7AD;
+            padding-bottom: 0.5rem;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin: 2rem 0 1rem;
+            color: #68604D;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+        }
+
+        .post-content a {
+            color: #b75a3c;
+            text-decoration: none;
+            border-bottom: 1px solid #D5C7AD;
+            transition: border-color 0.3s;
+        }
+
+        .post-content a:hover {
+            border-color: #b75a3c;
+        }
+
+        /* Language switching */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: #D5C7AD;
+            color: #68604D;
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Error state */
+        .error-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 3rem;
+            text-align: center;
+            background: #D5C7AD;
+            border-left: 4px solid #b75a3c;
+        }
+
+        .error-container h2 {
+            color: #68604D;
+            margin-bottom: 1rem;
+        }
+
+        .error-container p {
+            color: #68604D;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-container a {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            background: #8A8E75;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: background 0.3s;
+        }
+
+        .error-container a:hover {
+            background: #68604D;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPNy4o5YqHArTiiEysfK1xmX3E1hEImNGvX8M1rSqNYqVQNBFzBBlulHpb-bw2JJox4oQcqrmIPZayLbFZNJlqzMd1GudTzpOhooRjD50yDvzpSUtNmkAW6E9fWE-cup5zCEDGWA8S4dnJhgDNxE1SH2oq-Q3U_411MtxWnv2LUFhdJMOp-DR1btNeX3CW/s1500/TWOonTOUR-logo02.png" alt="2 on Tour">
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/africa">Africa</a></li>
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+            <div class="lang-toggle-nav">
+                <button class="lang-btn-nav active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn-nav" data-lang="de" onclick="switchLanguage('de')">DE</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-container">
+        <div class="loading-spinner"></div>
+        <p style="margin-top: 1rem;">Loading post from Blogger...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" style="display: none;">
+        <!-- Error content will be inserted here -->
+    </div>
+
+    <!-- Post Content -->
+    <div id="post-container" class="post-container" style="display: none;">
+        <article class="blog-post">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span class="meta-item" id="post-date">📅 Loading...</span>
+                    <span class="meta-item" id="post-labels">🏷️ Loading...</span>
+                </div>
+                <h1 id="post-title">Loading...</h1>
+            </header>
+            
+            <!-- English content -->
+            <div id="content-en" class="post-content lang-content active">
+                <!-- Content will be inserted here -->
+            </div>
+
+            <!-- German content -->
+            <div id="content-de" class="post-content lang-content">
+                <!-- Content will be inserted here -->
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; Copyright by Verena & Nicolas, 2 On Tour</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== CONFIGURATION =====
+        // REPLACE THESE WITH YOUR ACTUAL VALUES
+        const BLOG_ID = BLOG; // Your blog ID
+        const API_KEY = API_TEST';    // Get from Google Cloud Console
+        
+        // ===== UTILITY FUNCTIONS =====
+        
+        function getPostIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || urlParams.get('postId');
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function sanitizeHTML(html) {
+            // Remove Blogger's separator divs but keep images
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Find all separator divs and unwrap them
+            const separators = doc.querySelectorAll('.separator');
+            separators.forEach(sep => {
+                while (sep.firstChild) {
+                    sep.parentNode.insertBefore(sep.firstChild, sep);
+                }
+                sep.remove();
+            });
+
+            // Optimize image URLs (get larger versions)
+            const images = doc.querySelectorAll('img');
+            images.forEach(img => {
+                let src = img.getAttribute('src');
+                if (src) {
+                    // Replace small sizes with larger ones
+                    src = src.replace(/\/s72-c\//, '/s1200/');
+                    src = src.replace(/\/s\d+\//, '/s1200/');
+                    img.setAttribute('src', src);
+                    img.setAttribute('loading', 'lazy');
+                }
+            });
+
+            return doc.body.innerHTML;
+        }
+
+        function parseLanguageContent(htmlContent) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlContent, 'text/html');
+            
+            // Look for #english and #deutsch divs
+            const englishDiv = doc.querySelector('#english');
+            const deutschDiv = doc.querySelector('#deutsch');
+            
+            return {
+                en: englishDiv ? sanitizeHTML(englishDiv.innerHTML) : sanitizeHTML(htmlContent),
+                de: deutschDiv ? sanitizeHTML(deutschDiv.innerHTML) : ''
+            };
+        }
+
+        // ===== LANGUAGE SWITCHING =====
+        
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn-nav').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show/hide content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`content-${lang}`).classList.add('active');
+
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // ===== MAIN FUNCTION: FETCH AND RENDER POST =====
+        
+        async function loadPost() {
+            try {
+                const postId = getPostIdFromURL();
+                
+                if (!postId) {
+                    showError('No post ID provided', 'Please provide a post ID in the URL (?id=POST_ID)');
+                    return;
+                }
+
+                // Check if API key is configured
+                if (API_KEY === 'YOUR_API_KEY_HERE') {
+                    showError('API Key not configured', 'Please add your Blogger API key to the script.');
+                    return;
+                }
+
+                // Fetch post from Blogger API
+                const url = `https://www.googleapis.com/blogger/v3/blogs/${BLOG_ID}/posts/${postId}?key=${API_KEY}`;
+                
+                console.log('Fetching post from:', url);
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`API returned ${response.status}: ${response.statusText}`);
+                }
+
+                const post = await response.json();
+                console.log('Post data:', post);
+
+                // Parse bilingual content
+                const content = parseLanguageContent(post.content);
+
+                // Update page title
+                document.getElementById('page-title').textContent = `${post.title} | 2 on Tour`;
+                document.getElementById('post-title').textContent = post.title;
+
+                // Update meta info
+                document.getElementById('post-date').textContent = `📅 ${formatDate(post.published)}`;
+                
+                if (post.labels && post.labels.length > 0) {
+                    document.getElementById('post-labels').textContent = `🏷️ ${post.labels.join(', ')}`;
+                } else {
+                    document.getElementById('post-labels').style.display = 'none';
+                }
+
+                // Insert content
+                document.getElementById('content-en').innerHTML = content.en;
+                
+                if (content.de) {
+                    document.getElementById('content-de').innerHTML = content.de;
+                } else {
+                    // Hide German button if no German content
+                    document.querySelector('[data-lang="de"]').style.display = 'none';
+                }
+
+                // Show post, hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('post-container').style.display = 'block';
+
+                // Load saved language preference
+                const savedLang = localStorage.getItem('preferredLanguage');
+                if (savedLang && content.de) {
+                    switchLanguage(savedLang);
+                }
+
+            } catch (error) {
+                console.error('Error loading post:', error);
+                showError('Failed to load post', error.message);
+            }
+        }
+
+        function showError(title, message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').innerHTML = `
+                <div class="error-container">
+                    <h2>${title}</h2>
+                    <p>${message}</p>
+                    <a href="/">Return to Home</a>
+                </div>
+            `;
+            document.getElementById('error').style.display = 'block';
+        }
+
+        // ===== INITIALIZE =====
+        
+        // Load post when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadPost);
+        } else {
+            loadPost();
+        }
+    </script>
+</body>
+</html>
